@@ -1,0 +1,22 @@
+@import "_reset.css";
+@import "_fonts.css";
+@import "_variables.css";
+@import "_vendor.css";
+@import "_overall.css";
+
+/*components imports*/
+@import "./components/_header.css";
+@import "./components/_banner.css";
+@import "./components/_burger-menu.css";
+@import "./components/_slaider.css";
+@import "./components/_why-us.css";
+@import "./components/_catalog.css";
+@import "./components/_delivery.css";
+@import "./components/_offer-your-bouquet.css";
+@import "./components/_footer.css";
+
+/*media*/
+@import "./_media.css";
+
+
+

@@ -1,0 +1,62 @@
+.offer-your-bouquet{
+    background: var(--backlight-color);
+}
+.offer-your-bouquet__title{
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 48px;
+    color: #272626;
+    text-align: center;
+    padding-top: 60px;
+    letter-spacing: 2px;
+    padding-bottom: 60px;
+}
+.offer-your-bouquet__form-wrapper{
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.offer-your-bouquet__input-wrapper{
+    flex-direction: column;
+}
+.offer-your-bouquet__name,
+.offer-your-bouquet__phone,
+.offer-your-bouquet__idea{
+    border-radius: 45px;
+    width: 770px;
+    background: #fff8f5;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 119%;
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    align-items: center;
+    border: none;
+    margin-bottom: 20px;
+}
+.offer-your-bouquet__name,
+.offer-your-bouquet__phone,
+.offer-your-bouquet__idea{
+    padding: 24px 45px ;
+}
+.offer-your-bouquet__idea {
+    margin-bottom: 0;
+    height: 378px;
+}
+.offer-your-bouquet-img{
+    border-radius: 30px;
+}
+.wrapper-btn {
+    justify-content: center;
+}
+.offer-your-bouquet-btn{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;   
+    padding: 27px 70px;
+    background: #d7537a;
+    border-radius: 37px;
+    margin-top: 45px;    
+}
+

@@ -1,0 +1,100 @@
+.why-us{
+    background: var(--backlight-color);
+}
+.why-us__title{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 48px;
+    color: #272626;
+    letter-spacing: 0.07em;
+    padding-bottom: 40px;
+}
+
+.why-us__item-bg-first {
+    position: relative;
+    min-height: 625px;
+    margin-bottom: 16px;   
+}
+
+.why-us__item-bg-first::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48%;    
+    background: url(/img/why-us-first-bg.jpg) no-repeat right;
+    background-size: cover;    
+}
+.why-us__item-bg-first-desc{
+    position: absolute;
+    top: 37%;
+    right: 30%;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 24px;
+    color: #272626;
+    border-radius: 20px 0 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #fff8f5;
+    width: 586px;    
+    padding: 68px 50px;   
+}
+.why-us__item-bg-second{
+    position: relative;
+    min-height: 440px;
+    margin-bottom: 16px;
+}
+.why-us__item-bg-second::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 59%;
+    height: 90%;
+    background: url(/img/why-us-second-bg.jpg) no-repeat right;
+    background-size: cover;
+}
+.why-us__item-bg-second-desc{
+    position: absolute;
+    bottom: 0;
+    right: 31%;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 24px;
+    color: #272626;
+    border-radius: 0 20px 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #fff8f5;
+    width: 470px;
+    padding: 66px 35px;
+}
+.why-us__item-bg-third{
+    position: relative;
+    min-height: 551px;    
+}
+.why-us__item-bg-third::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+    background: url(/img/why-us-third-bg.jpg) no-repeat right;
+    background-size: cover;
+}
+.why-us__item-bg-third-desc {
+    position: absolute;
+    bottom: 20%;
+    right: 34%;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 24px;
+    color: #272626;
+    border-radius: 20px 0 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #fff8f5;
+    width: 566px;
+    padding: 96px 84px;
+}

@@ -1,0 +1,21 @@
+.delivery{
+    background: url(/img/svg/delivery-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+}
+.delivery__title{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 48px;
+    color: #272626;
+    padding: 158px 0 115px 84px;
+}
+.delivery__desc{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 36px;
+    color: #272626;
+    padding: 0 200px 264px 200px;
+}

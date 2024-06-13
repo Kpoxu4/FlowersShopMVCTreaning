@@ -1,9 +1,23 @@
+using FlowersShopMVCTraining.Repository;
+using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTrainingRepository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersShopDbContext.CONNECTION_STRING));
+
+//Repository
+builder.Services.AddScoped<UserRepository>();
+
 var app = builder.Build();
+
+var seed = new Seed();
+seed.Fill(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

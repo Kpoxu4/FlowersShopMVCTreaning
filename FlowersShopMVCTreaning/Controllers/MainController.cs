@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace FlowersShopMVCTreaning.Controllers
+namespace FlowersShopMVCTraining.Controllers
 {
     public class MainController : Controller
     {

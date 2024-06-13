@@ -1,4 +1,4 @@
-namespace FlowersShopMVCTreaning.Models
+namespace FlowersShopMVCTraining.Models
 {
     public class ErrorViewModel
     {

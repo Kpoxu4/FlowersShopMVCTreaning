@@ -34,7 +34,7 @@ namespace FlowersShopMVCTraining.Controllers
                 return Redirect("Login");
             }
             LoginUser(user);
-
+            
             return Redirect("/");
         }
         [HttpGet]
@@ -43,9 +43,23 @@ namespace FlowersShopMVCTraining.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Registration(RegistrationViewModel viewModel)// end this
+        public IActionResult Registration(RegistrationViewModel viewModel)
         {
-            return View();
+            if (viewModel.Password != viewModel.RepeatPassword)// TODO remove after attributes
+            {
+                return Redirect("Registration");
+            }
+            var user = new User
+            {
+                UserName = viewModel.UserName,
+                Password = viewModel.Password,
+                Phone = viewModel.Phone
+            };
+
+            _userRepository.Create(user);
+            LoginUser(user);
+
+            return Redirect("/");
         }
         
         public IActionResult Logout()

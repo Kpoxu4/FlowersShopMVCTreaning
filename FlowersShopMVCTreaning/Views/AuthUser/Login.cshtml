@@ -1,0 +1,11 @@
+﻿@model FlowersShopMVCTraining.Models.AuthUser.AuthUserViewModel
+
+@{
+    ViewData["Title"] = "Login";   
+}
+
+<form method="Post" style="margin-top: 500px;">
+    @Html.TextBoxFor(x => x.UserName, new { placeholder="Имя пользователя" })
+    @Html.TextBoxFor(x => x.Password, new { placeholder = "Пароль" })
+    <input type="submit" value="Отправить"/>
+</form>

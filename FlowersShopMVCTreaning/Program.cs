@@ -1,3 +1,4 @@
+using FlowersShopMVCTraining.Controllers;
 using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTrainingRepository;
@@ -8,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services
+    .AddAuthentication(AuthUserController.AUTH_METHOD)
+    .AddCookie(AuthUserController.AUTH_METHOD, option =>
+    {
+        option.LoginPath = "/AuthUser/Login";
+    });
 
 builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersShopDbContext.CONNECTION_STRING));
 
@@ -32,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,6 +1,6 @@
 namespace FlowersShopMVCTraining.Models.AuthUser
 {
-    public class AuthUserViewModel
+    public class LoginViewModel
     {
         public string UserName { get; set; }
 

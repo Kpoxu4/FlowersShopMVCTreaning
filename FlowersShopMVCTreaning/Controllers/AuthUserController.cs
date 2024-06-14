@@ -26,7 +26,7 @@ namespace FlowersShopMVCTraining.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(AuthUserViewModel viewModel)
+        public IActionResult Login(LoginViewModel viewModel)
         {
             var user = _userRepository.GetRegistrationUser(viewModel.UserName, viewModel.Password);
             if (user == null)
@@ -37,9 +37,23 @@ namespace FlowersShopMVCTraining.Controllers
 
             return Redirect("/");
         }
+        [HttpGet]
         public IActionResult Registration()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Registration(RegistrationViewModel viewModel)// end this
+        {
+            return View();
+        }
+        
+        public IActionResult Logout()
+        {
+            HttpContext
+                .SignOutAsync()
+                .Wait();
+            return Redirect("/");
         }
 
         private void LoginUser(User user)

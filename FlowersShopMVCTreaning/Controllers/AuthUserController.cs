@@ -59,7 +59,7 @@ namespace FlowersShopMVCTraining.Controllers
             _userRepository.Create(user);
             LoginUser(user);
 
-            return Redirect("/");
+            return Redirect("/");// TODO transition to a personal account after layout of a personal account
         }
         
         public IActionResult Logout()

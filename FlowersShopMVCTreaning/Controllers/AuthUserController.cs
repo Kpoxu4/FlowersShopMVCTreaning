@@ -37,6 +37,10 @@ namespace FlowersShopMVCTraining.Controllers
 
             return Redirect("/");
         }
+        public IActionResult Registration()
+        {
+            return View();
+        }
 
         private void LoginUser(User user)
         {

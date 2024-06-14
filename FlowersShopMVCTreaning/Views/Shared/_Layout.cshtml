@@ -1,105 +1,102 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE HTML>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Flower_ShopMvc</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <div "site-container first">   
-        <div class="first-bg"></div>
-        <!-- Header start -->
-        <header class="header">
-            <div class="container">
-                <div class="header__wrapper flex">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="site-container first">   
+            <div class="first-bg"></div>
+            <!-- Header start -->
+            <header class="header">
+                <div class="container">
+                    <div class="header__wrapper flex">
 
-                    <div class="burger flex">
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
+                        <div class="burger flex">
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                        </div>
+
+                        <div class="header__logo">
+                            <h2 class="header__logo-title">Floristman</h2>
+                            <p class="header__logo-desc">Широкий выбор на любой вкус</p>
+                        </div>
+
+                        <div class="header__users-tools flex">
+                            <a href="#" class="search">
+                                <img src="/img/svg/search.svg" alt="img"
+                                     class="search-svg users-tools-svg">
+                            </a>
+                            <a href="#" class="basket">
+                                <img src="/img/svg/basket.svg" alt="img" class="basket-svg users-tools-svg">
+                                <p class="basket__items">0</p>
+                            </a>
+                            <a href="" class="user-cabinet">
+                                <img src="/img/svg/user.svg" alt=""
+                                     class="user-cabinet-svg users-tools-svg">
+                            </a>
+                        </div>
+
                     </div>
-
-                    <div class="header__logo">
-                        <h2 class="header__logo-title">Floristman</h2>
-                        <p class="header__logo-desc">Широкий выбор на любой вкус</p>
+                    <div class="burger__menu">
+                        <ul class="burger__menu-items flex">
+                            <a href="/Main/Index">
+                            <li class="burger__menu-item">Главная</li>
+                            </a>
+                            <a href="#">
+                            <li class="burger__menu-item">Цветы</li>
+                            </a>
+                            <a href="#">
+                            <li class="burger__menu-item">Сладости</li>
+                            </a>
+                            <a href="#">
+                            <li class="burger__menu-item">Воздушные шарики</li>
+                            </a>
+                            <a href="#">
+                            <li class="burger__menu-item">Услуги</li>
+                            </a> 
+                            <a href="/AuthUser/Login">
+                            <li class="burger__menu-item">Войти</li>
+                            </a>
+                            <a href="/AuthUser/Registration">
+                            <li class="burger__menu-item">Зарегистрироваться</li>
+                            </a>
+                        </ul>
                     </div>
-
-                    <div class="header__users-tools flex">
-                        <a href="#" class="search">
-                            <img src="/img/svg/search.svg" alt="img"
-                                 class="search-svg users-tools-svg">
-                        </a>
-                        <a href="#" class="basket">
-                            <img src="/img/svg/basket.svg" alt="img" class="basket-svg users-tools-svg">
-                            <p class="basket__items">0</p>
-                        </a>
-                        <a href="" class="user-cabinet">
-                            <img src="/img/svg/user.svg" alt=""
-                                 class="user-cabinet-svg users-tools-svg">
-                        </a>
-                    </div>
-
                 </div>
-                <div class="burger__menu">
-                    <ul class="burger__menu-items flex">
-                        <a href="#">
-                        <li class="burger__menu-item">Цветы</li>
-                        </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Сладости</li>
-                        </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Воздушные шарики</li>
-                        </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Услуги</li>
-                        </a>                        
-                        <a href="/Authentication/Login">
-                        <li class="burger__menu-item">Войти</li>
-                        </a>
-                        <a href="/Authentication/Registration">
-                        <li class="burger__menu-item">Зарегистрироваться</li>
-                        </a>
-                        <a href="/AuthUser/Login">
-                        <li class="burger__menu-item">Войти</li>
-                        </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Зарегистрироваться</li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <!-- Header end -->
+            </header>
+            <!-- Header end -->
 
 
-        <main class="main">        
+            <main class="main">        
                                     
-            @RenderBody()
+                @RenderBody()
 
-        </main>
-        <!-- main start -->
+            </main>
+            
 
-        <!-- Footer start -->
-        <footer class="footer flex">
-            <h2 class="footer__title">Контакты:</h2>
-            <a href="" class="footer__tel flex">+749500000000</a>
-            <a href="" class="footer__email flex">Електоронный_адрес@gmail.com</a>
-            <ul class="footer__social flex">
-                <a href="#" class="footer__social-link">
-                <li class="footer__social-viber"></li></a>
-                <a href="#" class="footer__social-link">
-                <li class="footer__social-fb"></li></a>
-                <a href="#" class="footer__social-link">
-                <li class="footer__social-whatsApp"></li></a>
-                <a href="#" class="footer__social-link">
-                <li class="footer__social-instagram"></li></a>
-            </ul>
-            <p class="footer__desc">©2024. Все права защищены </p>
-        </footer>
-        <!-- footer end -->
-    </div>
-    <script src="/js/scripts.js"></script> 
-</body>
+            <!-- Footer start -->
+            <footer class="footer flex">
+                <h2 class="footer__title">Контакты:</h2>
+                <a href="" class="footer__tel flex">+749500000000</a>
+                <a href="" class="footer__email flex">Електоронный_адрес@gmail.com</a>
+                <ul class="footer__social flex">
+                    <a href="#" class="footer__social-link">
+                    <li class="footer__social-viber"></li></a>
+                    <a href="#" class="footer__social-link">
+                    <li class="footer__social-fb"></li></a>
+                    <a href="#" class="footer__social-link">
+                    <li class="footer__social-whatsApp"></li></a>
+                    <a href="#" class="footer__social-link">
+                    <li class="footer__social-instagram"></li></a>
+                </ul>
+                <p class="footer__desc">©2024. Все права защищены </p>
+            </footer>
+            <!-- footer end -->
+        </div>
+        <script src="/js/scripts.js"></script> 
+    </body>
 </html>

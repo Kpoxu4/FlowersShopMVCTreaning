@@ -62,6 +62,7 @@ namespace FlowersShopMVCTraining.Controllers
             {
                 new Claim(AuthClaimsConstants.ID, user.Id.ToString()),
                 new Claim(AuthClaimsConstants.NAME, user.UserName),
+                new Claim(AuthClaimsConstants.PHONE, user.Phone),
                 new Claim(ClaimTypes.AuthenticationMethod,AUTH_METHOD)
             };
 

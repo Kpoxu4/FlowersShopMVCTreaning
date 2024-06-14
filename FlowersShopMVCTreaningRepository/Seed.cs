@@ -28,7 +28,8 @@ namespace FlowersShopMVCTraining.Repository
                 var admin = new User
                 {
                     UserName = "admin",
-                    Password = "admin",                   
+                    Password = "admin",
+                    Phone = "+380663088726"
                 };
                 userRepository.Create(admin);
             }

@@ -4,5 +4,6 @@
     {
         public const string ID = nameof(ID);
         public const string NAME = nameof(NAME);
+        public const string PHONE = nameof(PHONE);
     }
 }

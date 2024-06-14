@@ -74,3 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showItems(currentIndex);
 });
+//password show
+document.addEventListener("DOMContentLoaded", function () {
+    function togglePasswordVisibility() {
+        const passwordInput = document.querySelector('input[name="password"]');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+    };
+});

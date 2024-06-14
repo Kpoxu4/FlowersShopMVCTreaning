@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Login";   
+}
+
+
+<div class="registration__wrapper login__wrapper">
+    <div class="registration login flex">
+        <h2 class="registration__title login__title">
+            Авторизация
+        </h2>
+        <p class="registration__question login__question">
+            Ещё нет аккаунта?<a href="#" class="registration__link login__link">Зарегистрируйтесь</a>
+        </p>
+        <form method="post" class="registration-form login-form">
+            <div class="registration__form-group login__form-group">
+                <input class="registration__form-group-item login__form-group-item" type="text" name="name" placeholder="Имя" required>
+            </div>
+            <div class="registration__form-group login__form-group">
+                <input class="registration__form-group-item login__form-group-item" type="password" name="password" placeholder="Пароль" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility()">&#128065;</span>
+            </div>
+            <button class="btn-reset registration-btn login-btn" type="submit">Войти</button>
+        </form>
+    </div>
+</div>

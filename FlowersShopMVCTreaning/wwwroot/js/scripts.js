@@ -114,7 +114,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
 
+    const btnlogout = document.querySelector('.logout');
+
+    if (btnlogout) {
+        btnlogout.addEventListener('click', function () {
+            localStorage.setItem('messageWindowDisplay', 'flex');
+        });
+    }
+
+});
 document.addEventListener("DOMContentLoaded", function () {
     const messageWindow = document.querySelector('.window-message-for-user');
     const displayStatus = localStorage.getItem('messageWindowDisplay');   
@@ -134,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () { // todo Доделать
+document.addEventListener("DOMContentLoaded", function () { 
     
     const btnlogout = document.querySelector('.logout');
 

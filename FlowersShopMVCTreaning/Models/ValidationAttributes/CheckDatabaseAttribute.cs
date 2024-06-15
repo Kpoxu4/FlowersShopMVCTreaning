@@ -21,7 +21,8 @@ namespace FlowersShopMVCTraining.Models.ValidationAttributes
             }
             
             string fieldValue = value.ToString();
-            var userRepository = (UserRepository)validationContext.GetService(typeof(UserRepository));
+
+            var userRepository = validationContext.GetService(typeof(UserRepository)) as UserRepository;
 
             var exists = userRepository.FiledValueExists(_fieldName, fieldValue);
             if (exists)

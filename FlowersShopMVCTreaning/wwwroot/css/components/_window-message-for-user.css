@@ -1,0 +1,37 @@
+.window-message-for-user {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+}
+
+.window-message-for-user-content {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.07em;
+    display: inline-block;
+    background-color: #fff0e4;
+    margin: 15% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-message-for-user-btn {
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    background: #d7537a;
+}

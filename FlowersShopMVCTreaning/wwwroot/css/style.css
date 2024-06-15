@@ -6,6 +6,7 @@
 
 /*components imports*/
 @import "./components/_header.css";
+@import "./components/_window-message-for-user.css";
 @import "./components/_banner.css";
 @import "./components/_burger-menu.css";
 @import "./components/_slaider.css";

@@ -1,8 +1,15 @@
-﻿@{
+﻿@model FlowersShopMVCTraining.Models.MainIndexViewModel
+@{
     ViewData["Title"] = "Main";   
 }
 
-
+<div class="window-message-for-user">
+    <!-- Содержимое модального окна -->
+    <div class="window-message-for-user-content">
+        <p>@Model.MessageForUser</p>
+        <button class="window-message-for-user-btn btn-reset">OK</button>
+    </div>
+</div>
 <div class="container">
     <div class="banner">
         <p class=" banner__description">Подарите ощущение праздника</p>

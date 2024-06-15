@@ -1,3 +1,4 @@
+using FlowersShopMVCTraining.Models;
 using FlowersShopMVCTraining.Models.AuthUser;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
@@ -13,10 +14,11 @@ namespace FlowersShopMVCTraining.Controllers
     {
         public const string AUTH_METHOD = "Flower";
         private UserRepository _userRepository;
-
-        public AuthUserController(UserRepository userRepository)
+        private AuthStuff _authStuff;
+        public AuthUserController(UserRepository userRepository, AuthStuff authStuff)
         {
             _userRepository = userRepository;
+            _authStuff = authStuff;
         }
 
         [HttpGet]
@@ -28,14 +30,26 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var user = _userRepository.GetRegistrationUser(viewModel.UserName, viewModel.Password);
+
             if (user == null)
             {
-                return Redirect("Login");
+                ModelState.AddModelError(string.Empty, "Пользователь с таким именем и паролем не найден.");
+                return View(viewModel);
             }
             LoginUser(user);
+
+            var model = new MainIndexViewModel
+            {
+                MessageForUser = $"Добро пожаловать, {user.UserName}"
+            };
             
-            return Redirect("/");
+            return RedirectToAction("Index", "Main", model);
         }
         [HttpGet]
         public IActionResult Registration()
@@ -60,7 +74,12 @@ namespace FlowersShopMVCTraining.Controllers
             _userRepository.Create(user);
             LoginUser(user);
 
-            return Redirect("/");// TODO transition to a personal account after layout of a personal account
+            var model = new MainIndexViewModel
+            {
+                MessageForUser = $"Вы успешно зарегистрировались, {user.UserName}"
+            };
+
+            return RedirectToAction("Index", "Main", model);
         }
         
         public IActionResult Logout()
@@ -68,7 +87,15 @@ namespace FlowersShopMVCTraining.Controllers
             HttpContext
                 .SignOutAsync()
                 .Wait();
-            return Redirect("/");
+
+            var name = _authStuff.GetUserName();
+
+            var model = new MainIndexViewModel
+            {
+                MessageForUser = $"Вы успешно вышли, {name}"
+            };
+
+            return RedirectToAction("Index", "Main", model);
         }
 
         private void LoginUser(User user)

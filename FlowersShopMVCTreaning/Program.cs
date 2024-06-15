@@ -1,6 +1,7 @@
 using FlowersShopMVCTraining.Controllers;
 using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTraining.Service;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,11 @@ builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersS
 //Repository
 builder.Services.AddScoped<UserRepository>();
 
+
+// Services
+builder.Services.AddScoped<AuthStuff>();
+
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 var seed = new Seed();

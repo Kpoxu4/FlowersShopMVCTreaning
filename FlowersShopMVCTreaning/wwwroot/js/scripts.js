@@ -104,5 +104,46 @@ document.addEventListener("DOMContentLoaded", function () {
     confirm.addEventListener('input', onChange);
 });
 
+//Password Message for User
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.querySelector('.registration-btn');
+
+    if (btn) {
+        btn.addEventListener('click', function () {
+            localStorage.setItem('messageWindowDisplay', 'flex'); 
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const messageWindow = document.querySelector('.window-message-for-user');
+    const displayStatus = localStorage.getItem('messageWindowDisplay');   
+
+    if (messageWindow && displayStatus === 'flex') {
+        messageWindow.style.display = displayStatus; 
+        localStorage.removeItem('messageWindowDisplay'); 
+    }    
+   
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const btnCloseWindow = document.querySelector('.window-message-for-user-btn');
+    const messageWindow = document.querySelector('.window-message-for-user');
+    btnCloseWindow.addEventListener('click', function () {
+        messageWindow.style.display = 'none'; 
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () { // todo Доделать
+    
+    const btnlogout = document.querySelector('.logout');
+
+    if (btnlogout) {
+        btn.addEventListener('click', function () {
+            localStorage.setItem('messageWindowDisplay', 'flex');
+        });
+    }
+    
+});
 
 

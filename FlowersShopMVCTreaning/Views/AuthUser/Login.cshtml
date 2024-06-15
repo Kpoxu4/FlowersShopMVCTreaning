@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Login";   
+    ViewData["Title"] = "Login";
 }
 
 
@@ -13,10 +13,21 @@
         </p>
         <form method="post" class="registration-form login-form">
             <div class="registration__form-group login__form-group">
-                <input class="registration__form-group-item login__form-group-item" type="text" name="UserName" placeholder="Имя" required>
+                <input class="registration__form-group-item login__form-group-item" type="text" name="UserName" placeholder="Имя"
+                       required
+                       minlength="3"
+                       maxlenght="20"
+                       pattern="^[a-zA-Zа-яА-Я0-9]*$"
+                       title="Имя пользователя может содержать только буквы и цифры.">
             </div>
             <div class="registration__form-group login__form-group">
-                <input class="registration__form-group-item login__form-group-item" type="password" name="password" placeholder="Пароль" required>
+                <input class="registration__form-group-item login__form-group-item" type="password" name="password" placeholder="Пароль"
+                       required
+                       minlength="8"
+                       maxlenght="20"
+                       pattern="(?=.*\d)(?=.*[a-zA-Zа-яА-Я]).{8,}"
+                       title="Пароль должен содержать хотя бы одну цифру, одну заглавную и одну строчную букву.">
+                
                 <span class="toggle-password">👁️</span>
             </div>
             <button class="btn-reset registration-btn login-btn" type="submit">Войти</button>

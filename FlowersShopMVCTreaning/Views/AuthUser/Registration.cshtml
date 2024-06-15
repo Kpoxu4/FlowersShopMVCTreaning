@@ -19,7 +19,12 @@
                        title="Номер телефона должен состоять из 10–15 цифр и может начинаться с +.">
             </div>
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="text" name="UserName" placeholder="Имя" required>
+                <input class="registration__form-group-item" type="text" name="UserName" placeholder="Имя"
+                       required
+                       minlength="3"
+                       maxlenght="20"
+                       pattern="^[a-zA-Zа-яА-Я0-9]*$"
+                       title="Имя пользователя может содержать только буквы и цифры.">
             </div>
             <div class="registration__form-group">
 

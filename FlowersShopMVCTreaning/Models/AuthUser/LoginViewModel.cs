@@ -8,6 +8,7 @@ namespace FlowersShopMVCTraining.Models.AuthUser
         private const string EROR_MESSAGE_PSSWORD = "Пароль должен содержать хотя бы одну цифру, одну заглавную и одну строчную букву.Минимально 8 Символов";
 
         [Required(ErrorMessage = REQUIRED_EROR_MESSAGE)]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Имя должно быть от 3 до 20 симоволов")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = REQUIRED_EROR_MESSAGE)]

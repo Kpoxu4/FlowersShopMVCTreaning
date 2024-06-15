@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemWidth = sliderItems[0].offsetWidth;
     const itemsToShow = Math.floor(sliderWidth / itemWidth);
     let currentIndex = 0;
-    
+
     function showItems(startIndex) {
         for (let i = 0; i < totalItems; i++) {
             const itemIndex = (startIndex + i) % totalItems;
@@ -30,14 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 animateOpacity(sliderItems[itemIndex]);
             } else {
                 sliderItems[itemIndex].style.display = "none";
-               
+
             }
         }
     }
 
     function animateOpacity(element) {
         let opacity = 0;
-        function increase () {
+        function increase() {
             opacity += 0.05; // скорость анимации
             element.style.opacity = opacity;
             if (opacity >= 1) {
@@ -84,9 +84,25 @@ document.addEventListener('DOMContentLoaded', function () {
             const passwordInput = this.previousElementSibling;
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            this.textContent = type === 'password' ? '👁️' : '🙈'; 
+            this.textContent = type === 'password' ? '👁️' : '🙈';
         });
     });
 });
+
+//Password Validation
+document.addEventListener("DOMContentLoaded", function () {
+    const password = document.querySelector('.password');
+    const confirm = document.querySelector('.repeat-password');
+    function onChange() {
+        if (confirm.value === password.value) {
+            confirm.setCustomValidity('');
+        } else {
+            confirm.setCustomValidity('Пароли не совпадают');
+            confirm.reportValidity();
+        }
+    }    
+    confirm.addEventListener('input', onChange);
+});
+
 
 

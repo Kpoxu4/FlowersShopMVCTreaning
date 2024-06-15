@@ -45,10 +45,11 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Registration(RegistrationViewModel viewModel)
         {
-            if (viewModel.Password != viewModel.RepeatPassword)// TODO remove after attributes
+            if (!ModelState.IsValid)
             {
-                return Redirect("Registration");
+                return View(viewModel);
             }
+
             var user = new User
             {
                 UserName = viewModel.UserName,

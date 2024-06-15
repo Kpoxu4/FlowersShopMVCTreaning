@@ -11,17 +11,31 @@
         </p>
         <form method="post" class="registration-form">
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="text" name="phone" placeholder="Телефон" required>
+                <input class="registration__form-group-item" type="text" name="phone" placeholder="Телефон"
+                       required
+                       minlength="10"
+                       maxlength="15"
+                       pattern="\+?\d{10,15}"
+                       title="Номер телефона должен состоять из 10–15 цифр и может начинаться с +.">
             </div>
             <div class="registration__form-group">
                 <input class="registration__form-group-item" type="text" name="UserName" placeholder="Имя" required>
             </div>
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="password" name="password" placeholder="Пароль" required>
+
+                <input class="registration__form-group-item password" type="password" name="password" placeholder="Пароль"
+                       required
+                       minlength="8"
+                       maxlenght="20"
+                       pattern="(?=.*\d)(?=.*[a-zA-Zа-яА-Я]).{8,}"
+                       title="Пароль должен содержать хотя бы одну цифру, одну заглавную и одну строчную букву.">
                 <span class="toggle-password">👁️</span>
+
             </div>
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="password" name="repeatPassword" placeholder="Повторить Пароль" required>
+                <input class="registration__form-group-item repeat-password" type="password" name="repeatPassword" placeholder="Повторить Пароль"
+                       oninput="check()"
+                       required>
                 <span class="toggle-password">👁️</span>
             </div>
             <button class="btn-reset registration-btn" type="submit">Зарегистрироваться</button>

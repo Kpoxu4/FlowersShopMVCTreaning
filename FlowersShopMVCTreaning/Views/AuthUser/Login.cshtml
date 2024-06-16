@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FlowersShopMVCTraining.Models.AuthUser.LoginViewModel
+@{
     ViewData["Title"] = "Login";
 }
 
@@ -19,6 +20,7 @@
                        maxlenght="20"
                        pattern="^[a-zA-Zа-яА-Я0-9]*$"
                        title="Имя пользователя может содержать только буквы и цифры.">
+                @Html.ValidationMessageFor(x => x.UserName)
             </div>
             <div class="registration__form-group login__form-group">
                 <input class="registration__form-group-item login__form-group-item" type="password" name="password" placeholder="Пароль"
@@ -27,7 +29,7 @@
                        maxlenght="20"
                        pattern="(?=.*\d)(?=.*[a-zA-Zа-яА-Я]).{8,}"
                        title="Пароль должен содержать хотя бы одну цифру, одну заглавную и одну строчную букву.">
-                
+                @Html.ValidationMessageFor(x => x.Password)
                 <span class="toggle-password">👁️</span>
             </div>
             <button class="btn-reset registration-btn login-btn" type="submit">Войти</button>

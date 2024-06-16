@@ -13,10 +13,9 @@ namespace FlowersShopMVCTraining.Repository.Repository
             var user = _dbSet.FirstOrDefault(user => user.UserName == userName && user.Password == password);
             return user;
         }
-        public bool FiledValueExists(string fieldName, string fieldValue) //todo refactoring
-        {
-            bool exists = _dbContext.Set<User>().Any(u => EF.Property<string>(u, fieldName) == fieldValue);
-            return exists;
-        }
+        public bool ExistName(string login)
+             => _dbSet.Any(x => x.UserName == login);
+        public bool ExistPhone(string phone)
+             => _dbSet.Any(x => x.Phone == phone);
     }
 }

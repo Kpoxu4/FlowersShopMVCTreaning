@@ -59,10 +59,19 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Registration(RegistrationViewModel viewModel)
         {
+            if (_userRepository.ExistName(viewModel.UserName))
+            {
+                ModelState.AddModelError(nameof(RegistrationViewModel.UserName), "Имя занято.");
+            }
+            if (_userRepository.ExistPhone(viewModel.Phone))
+            {
+                ModelState.AddModelError(nameof(RegistrationViewModel.Phone), "Телефонный номер уже есть");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
-            }
+            }            
 
             var user = new User
             {

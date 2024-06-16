@@ -98,10 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     togglePasswordButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const passwordInput = this.previousElementSibling;
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.textContent = type === 'password' ? '👁️' : '🙈';
+            const parent = this.closest('.registration__form-group'); // родительский элемент
+            const passwordInput = parent.querySelector('input[type="password"], input[type="text"]'); // находим поле ввода
+
+            if (passwordInput) {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.textContent = type === 'password' ? '👁️' : '🙈';
+            }
         });
     });
 });

@@ -1,3 +1,4 @@
+using FlowersShopMVCTraining.Controllers.ActionFilterAttributes;
 using FlowersShopMVCTraining.Models;
 using FlowersShopMVCTraining.Models.AuthUser;
 using FlowersShopMVCTraining.Repository.Enum;
@@ -26,12 +27,14 @@ namespace FlowersShopMVCTraining.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymousOnlyAttribute]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymousOnlyAttribute]
         public IActionResult Login(LoginViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -58,11 +61,13 @@ namespace FlowersShopMVCTraining.Controllers
             return RedirectToAction("Index", "Main", model);
         }
         [HttpGet]
+        [AllowAnonymousOnlyAttribute]
         public IActionResult Registration()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymousOnlyAttribute]
         public IActionResult Registration(RegistrationViewModel viewModel)
         {
             if (_userRepository.ExistName(viewModel.UserName))

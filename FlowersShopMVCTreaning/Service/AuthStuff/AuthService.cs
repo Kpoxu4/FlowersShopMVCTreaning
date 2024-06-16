@@ -1,4 +1,5 @@
-﻿using FlowersShopMVCTraining.Repository.Model;
+﻿using FlowersShopMVCTraining.Repository.Enum;
+using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
 using System.Security;
 
@@ -32,6 +33,15 @@ namespace FlowersShopMVCTraining.Service.AuthStuff
             var userIdText = GetClaimValue(AuthClaimsConstants.ID);
             var userId = int.Parse(userIdText);
             return userId;
+        }
+        public bool IsAdmin()
+        {
+            return IsAuthenticated() && GetUserRole() == UserRole.Admin;
+        }
+        public UserRole GetUserRole()
+        {
+            var userRole = GetClaimValue(AuthClaimsConstants.USER_ROLE);
+            return Enum.Parse<UserRole>(userRole);
         }
 
         private string GetClaimValue(string claimType)

@@ -29,7 +29,7 @@ namespace FlowersShopMVCTraining.Repository
                 var admin = new User
                 {
                     UserName = "admin",
-                    Password = "adminAdmin123",
+                    Password = "$2a$10$LV.a2yacBvzVY8ZEwG/4XeppQMlYLOvSx6uqEA35ppYVAyl5dN9Ra",
                     Phone = "+380663088726",
                     UserRole = UserRole.Admin,
                 };

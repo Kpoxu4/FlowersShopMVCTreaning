@@ -1,4 +1,6 @@
-﻿<!DOCTYPE HTML>
+﻿@using FlowersShopMVCTraining.Service.AuthStuff 
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE HTML>
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
@@ -42,7 +44,7 @@
                         {
                             <a href="/AuthUser/Logout" class="logout">
                                 Выйти
-                            </a>                            
+                            </a>
                         }
                     </div>
 
@@ -64,12 +66,21 @@
                         <a href="#">
                         <li class="burger__menu-item">Услуги</li>
                         </a>
-                        <a href="/AuthUser/Login">
-                        <li class="burger__menu-item">Войти</li>
-                        </a>
-                        <a href="/AuthUser/Registration">
-                        <li class="burger__menu-item">Зарегистрироваться</li>
-                        </a>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a href="/AuthUser/Login">
+                            <li class="burger__menu-item">Войти</li>
+                            </a>
+                            <a href="/AuthUser/Registration">
+                            <li class="burger__menu-item">Зарегистрироваться</li>
+                            </a>                            
+                        }
+                        @if(HttpContextAccessor.HttpContext.User.IsInCustomRole("Admin"))
+                        {
+                            <a href="/Admin/Index">
+                            <li class="burger__menu-item">Страничка Админа</li>
+                            </a>
+                        }
                     </ul>
                 </div>
             </div>

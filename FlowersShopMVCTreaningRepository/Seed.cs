@@ -1,4 +1,5 @@
-﻿using FlowersShopMVCTraining.Repository.Model;
+﻿using FlowersShopMVCTraining.Repository.Enum;
+using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -29,7 +30,8 @@ namespace FlowersShopMVCTraining.Repository
                 {
                     UserName = "admin",
                     Password = "adminAdmin123",
-                    Phone = "+380663088726"
+                    Phone = "+380663088726",
+                    UserRole = UserRole.Admin,
                 };
                 userRepository.Create(admin);
             }

@@ -1,8 +1,9 @@
 using FlowersShopMVCTraining.Models;
 using FlowersShopMVCTraining.Models.AuthUser;
+using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
-using FlowersShopMVCTraining.Service;
+using FlowersShopMVCTraining.Service.AuthStuff;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -14,11 +15,11 @@ namespace FlowersShopMVCTraining.Controllers
     {
         public const string AUTH_METHOD = "Flower";
         private UserRepository _userRepository;
-        private AuthStuff _authStuff;
-        public AuthUserController(UserRepository userRepository, AuthStuff authStuff)
+        private AuthService _authService;
+        public AuthUserController(UserRepository userRepository, AuthService authService)
         {
             _userRepository = userRepository;
-            _authStuff = authStuff;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -42,6 +43,7 @@ namespace FlowersShopMVCTraining.Controllers
                 ModelState.AddModelError(string.Empty, "ѕользователь с таким именем и паролем не найден.");
                 return View(viewModel);
             }
+
             LoginUser(user);
 
             var model = new MainIndexViewModel
@@ -77,7 +79,8 @@ namespace FlowersShopMVCTraining.Controllers
             {
                 UserName = viewModel.UserName,
                 Password = viewModel.Password,
-                Phone = viewModel.Phone
+                Phone = viewModel.Phone,
+                UserRole = UserRole.User
             };
 
             _userRepository.Create(user);
@@ -97,7 +100,7 @@ namespace FlowersShopMVCTraining.Controllers
                 .SignOutAsync()
                 .Wait();
 
-            var name = _authStuff.GetUserName();
+            var name = _authService.GetUserName();
 
             var model = new MainIndexViewModel
             {
@@ -114,6 +117,7 @@ namespace FlowersShopMVCTraining.Controllers
                 new Claim(AuthClaimsConstants.ID, user.Id.ToString()),
                 new Claim(AuthClaimsConstants.NAME, user.UserName),
                 new Claim(AuthClaimsConstants.PHONE, user.Phone),
+                new Claim(AuthClaimsConstants.USER_ROLE, user.UserRole.ToString()),
                 new Claim(ClaimTypes.AuthenticationMethod,AUTH_METHOD)
             };
 

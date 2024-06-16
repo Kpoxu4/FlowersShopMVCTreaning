@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlowersShopMVCTraining.Repository.Migrations
 {
     [DbContext(typeof(FlowersShopDbContext))]
-    [Migration("20240613134543_firstMigration")]
+    [Migration("20240616085101_firstMigration")]
     partial class firstMigration
     {
         /// <inheritdoc />
@@ -36,9 +36,16 @@ namespace FlowersShopMVCTraining.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserRole")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

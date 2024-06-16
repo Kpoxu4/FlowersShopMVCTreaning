@@ -1,7 +1,7 @@
 using FlowersShopMVCTraining.Controllers;
 using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
-using FlowersShopMVCTraining.Service;
+using FlowersShopMVCTraining.Service.AuthStuff;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +24,7 @@ builder.Services.AddScoped<UserRepository>();
 
 
 // Services
-builder.Services.AddScoped<AuthStuff>();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();

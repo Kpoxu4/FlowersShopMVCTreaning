@@ -2,14 +2,14 @@
 using FlowersShopMVCTraining.Repository.Repository;
 using System.Security;
 
-namespace FlowersShopMVCTraining.Service
+namespace FlowersShopMVCTraining.Service.AuthStuff
 {
-    public class AuthStuff
+    public class AuthService
     {
         private IHttpContextAccessor _httpContextAccessor;
         private UserRepository _userRepository;
 
-        public AuthStuff(IHttpContextAccessor httpContextAccessor, UserRepository userRepository)
+        public AuthService(IHttpContextAccessor httpContextAccessor, UserRepository userRepository)
         {
             _httpContextAccessor = httpContextAccessor;
             _userRepository = userRepository;

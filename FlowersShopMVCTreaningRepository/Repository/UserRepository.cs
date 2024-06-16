@@ -8,9 +8,9 @@ namespace FlowersShopMVCTraining.Repository.Repository
     {
         public UserRepository(FlowersShopDbContext dbContext) : base(dbContext) { }
 
-        public User GetRegistrationUser(string userName, string password)
+        public User GetRegistrationUser(string userName)
         {
-            var user = _dbSet.FirstOrDefault(user => user.UserName == userName && user.Password == password);
+            var user = _dbSet.FirstOrDefault(user => user.UserName == userName);
             return user;
         }
         public bool ExistName(string login)

@@ -3,6 +3,7 @@ using FlowersShopMVCTraining.Models.AuthUser;
 using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTraining.Service;
 using FlowersShopMVCTraining.Service.AuthStuff;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,12 @@ namespace FlowersShopMVCTraining.Controllers
         public const string AUTH_METHOD = "Flower";
         private UserRepository _userRepository;
         private AuthService _authService;
-        public AuthUserController(UserRepository userRepository, AuthService authService)
+        private HashingService _hashingService;
+        public AuthUserController(UserRepository userRepository, AuthService authService, HashingService hashingService)
         {
             _userRepository = userRepository;
             _authService = authService;
+            _hashingService = hashingService;
         }
 
         [HttpGet]
@@ -36,19 +39,20 @@ namespace FlowersShopMVCTraining.Controllers
                 return View(viewModel);
             }
 
-            var user = _userRepository.GetRegistrationUser(viewModel.UserName, viewModel.Password);
+            var user = _userRepository.GetRegistrationUser(viewModel.UserName);
+            var isPasswordCorrect = _hashingService.VerifyPassword(user.Password, viewModel.Password);
 
-            if (user == null)
+            if (user == null && !isPasswordCorrect)
             {
                 ModelState.AddModelError(string.Empty, "Пользователь с таким именем и паролем не найден.");
                 return View(viewModel);
             }
 
-            LoginUser(user);
+            LoginUser(user!);
 
             var model = new MainIndexViewModel
             {
-                MessageForUser = $"Добро пожаловать, {user.UserName}"
+                MessageForUser = $"Добро пожаловать, {user!.UserName}"
             };
             
             return RedirectToAction("Index", "Main", model);
@@ -73,12 +77,12 @@ namespace FlowersShopMVCTraining.Controllers
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
-            }            
-
+            }
+           
             var user = new User
             {
                 UserName = viewModel.UserName,
-                Password = viewModel.Password,
+                Password = _hashingService.HashPassword(viewModel.Password),
                 Phone = viewModel.Phone,
                 UserRole = UserRole.User
             };

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.Repository", "FlowersShopMVCTreaningRepository\FlowersShopMVCTraining.Repository.csproj", "{8715C3BB-8E01-4228-8F5C-CB1163D17305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowersShopImageProcessor", "FlowersShopImageProcessor\FlowersShopImageProcessor.csproj", "{FB40C40D-B6B4-43ED-9863-BA9729E1D316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.ImageProcessor", "FlowersShopImageProcessor\FlowersShopMVCTraining.ImageProcessor.csproj", "{FB40C40D-B6B4-43ED-9863-BA9729E1D316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlowersShopImageProcessor\FlowersShopImageProcessor.csproj" />
+    <ProjectReference Include="..\FlowersShopImageProcessor\FlowersShopMVCTraining.ImageProcessor.csproj" />
     <ProjectReference Include="..\FlowersShopMVCTreaningRepository\FlowersShopMVCTraining.Repository.csproj" />
   </ItemGroup>
 

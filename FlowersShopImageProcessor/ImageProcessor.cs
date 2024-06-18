@@ -2,7 +2,7 @@
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Formats.Jpeg;
 
-namespace FlowersShopImageProcessor
+namespace FlowersShopMVCTraining.ImageProcessor
 {
     public class ImageProcessor
     {

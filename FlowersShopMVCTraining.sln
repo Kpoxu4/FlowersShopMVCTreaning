@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.Repository", "FlowersShopMVCTreaningRepository\FlowersShopMVCTraining.Repository.csproj", "{8715C3BB-8E01-4228-8F5C-CB1163D17305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowersShopImageHandler", "FlowersShopImageHandler\FlowersShopImageHandler.csproj", "{27D9AC6B-806B-416E-A2D3-39B9B22346A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowersShopImageProcessor", "FlowersShopImageProcessor\FlowersShopImageProcessor.csproj", "{FB40C40D-B6B4-43ED-9863-BA9729E1D316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{8715C3BB-8E01-4228-8F5C-CB1163D17305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8715C3BB-8E01-4228-8F5C-CB1163D17305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8715C3BB-8E01-4228-8F5C-CB1163D17305}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27D9AC6B-806B-416E-A2D3-39B9B22346A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27D9AC6B-806B-416E-A2D3-39B9B22346A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27D9AC6B-806B-416E-A2D3-39B9B22346A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27D9AC6B-806B-416E-A2D3-39B9B22346A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

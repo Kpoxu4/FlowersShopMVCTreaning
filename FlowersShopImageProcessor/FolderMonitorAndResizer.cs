@@ -1,14 +1,22 @@
-﻿namespace FlowersShopImageHandler
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats.Jpeg;
+
+namespace FlowersShopImageProcessor
 {
-    public class FolderWatcher
+    public class FolderMonitorAndResizer
     {
         private readonly string _watchPath;
         private readonly ImageProcessor _imageProcessor;
         private FileSystemWatcher _watcher;
 
-        public FolderWatcher(ImageProcessor imageProcessor, string watchPath)
+
+        public FolderMonitorAndResizer(string watchPath, string outputPathSmall, string outputPathLarge, int smallWidth, int smallHeight, int largeWidth, int largeHeight)
         {
-            _imageProcessor = imageProcessor;
+            var smallSize = new Size(smallWidth, smallHeight);
+            var largeSize = new Size(largeWidth, largeHeight);
+
+            _imageProcessor = new ImageProcessor(outputPathSmall, outputPathLarge, smallSize, largeSize);
             _watchPath = watchPath;
             CreateWatchDirectories();
         }
@@ -18,7 +26,7 @@
             _watcher = new FileSystemWatcher
             {
                 Path = _watchPath,
-                Filter = "*.*", 
+                Filter = "*.*",
                 EnableRaisingEvents = true
             };
 
@@ -26,11 +34,11 @@
 
             Console.WriteLine($"Watching for changes in {_watchPath}. Press Ctrl+C to exit.");
 
-           
+
             while (true)
             {
-               
-                System.Threading.Thread.Sleep(1000); 
+
+                System.Threading.Thread.Sleep(1000);
             }
         }
 

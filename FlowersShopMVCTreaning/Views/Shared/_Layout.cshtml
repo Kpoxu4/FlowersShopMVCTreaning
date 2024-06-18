@@ -1,5 +1,4 @@
-﻿@using FlowersShopMVCTraining.Service.AuthStuff 
-@inject IHttpContextAccessor HttpContextAccessor
+﻿@inject FlowersShopMVCTraining.Service.AuthStuff.AuthService authSErvise
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
@@ -75,7 +74,7 @@
                             <li class="burger__menu-item">Зарегистрироваться</li>
                             </a>                            
                         }
-                        @if(HttpContextAccessor.HttpContext.User.IsInCustomRole("Admin"))
+                        @if (authSErvise.IsAdmin())
                         {
                             <a href="/Admin/Index">
                             <li class="burger__menu-item">Страничка Админа</li>

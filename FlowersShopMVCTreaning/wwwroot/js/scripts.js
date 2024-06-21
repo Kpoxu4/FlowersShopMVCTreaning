@@ -1,31 +1,30 @@
+$(document).ready(function () {
+    const burgerButton = $('.burger');
+    const menu = $('.burger__menu');
 
-//burger menu
-document.addEventListener('DOMContentLoaded', function () {
-    const burgerButton = document.querySelector('.burger');
-    const menu = document.querySelector('.burger__menu');
-
+    //burger menu
     function toggleMenu() {
-        if (menu.style.display === 'block') {
-            menu.style.display = 'none';
+        if (menu.css('display') === 'block') {
+            menu.hide();
         } else {
-            menu.style.display = 'block';
+            menu.show();
         }
     }
 
-    burgerButton.addEventListener('click', function (event) { 
+    burgerButton.on('click', function (event) {
         event.stopPropagation();
         toggleMenu();
     });
 
-    document.addEventListener('click', function (event) {        
-        if (!menu.contains(event.target) && menu.style.display === 'block') {
-            menu.style.display = 'none';
+    $(document).on('click', function (event) {
+        if (!menu.is(event.target) && menu.css('display') === 'block') {
+            menu.hide();
         }
     });
 
-    document.addEventListener('scroll', function () {
-        if (menu.style.display === 'block') {
-            menu.style.display = 'none';
+    $(document).on('scroll', function () {
+        if (menu.css('display') === 'block') {
+            menu.hide();
         }
     });
 });
@@ -35,39 +34,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//Password Message for User
-document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.querySelector('.registration-btn');
-
-    if (btn) {
-        btn.addEventListener('click', function () {
-            localStorage.setItem('messageWindowDisplay', 'flex'); 
-        });
-    }
-});
-document.addEventListener("DOMContentLoaded", function () {
-
-    const btnlogout = document.querySelector('.logout');
-
-    if (btnlogout) {
-        btnlogout.addEventListener('click', function () {
-            localStorage.setItem('messageWindowDisplay', 'flex');
-        });
-    }
-
-});
-
-
-document.addEventListener("DOMContentLoaded", function () { 
-    
-    const btnlogout = document.querySelector('.logout');
-
-    if (btnlogout) {
-        btn.addEventListener('click', function () {
-            localStorage.setItem('messageWindowDisplay', 'flex');
-        });
-    }
-    
-});
 
 

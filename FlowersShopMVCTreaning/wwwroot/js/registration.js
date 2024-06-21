@@ -2,7 +2,9 @@ $(document).ready(function () {
     const togglePasswordButtons = $('.toggle-password');
     const password = $('.password');
     const confirm = $('.repeat-password');
+    const btn = $('.registration-btn');
 
+    //togglePassword
     togglePasswordButtons.each(function () {
         $(this).on('click', function () {
             const parent = $(this).closest('.registration__form-group');
@@ -26,5 +28,12 @@ $(document).ready(function () {
     }
 
     confirm.on('input', onChange);
+
+    //message for user
+    if (btn.length) {
+        btn.on('click', function () {
+            localStorage.setItem('messageWindowDisplay', 'flex');
+        });
+    }
 });
 

@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const togglePasswordButtons = $('.toggle-password');
+    const btn = $('.login-btn');
 
+    //togglePassword
     togglePasswordButtons.each(function () {
         $(this).on('click', function () {
             const parent = $(this).closest('.registration__form-group');
@@ -13,4 +15,11 @@ $(document).ready(function () {
             }
         });
     });
+
+    //message for user
+    if (btn.length) {
+        btn.on('click', function () {
+            localStorage.setItem('messageWindowDisplay', 'flex');
+        });
+    }
 });

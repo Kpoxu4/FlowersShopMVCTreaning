@@ -31,6 +31,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<HashingService>();
 builder.Services.AddSingleton<PathHelper>();
 
+builder.Services.AddSignalR();
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 

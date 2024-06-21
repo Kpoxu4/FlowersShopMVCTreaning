@@ -14,30 +14,21 @@
         <form method="post" class="registration-form">
             <div class="registration__form-group">
                 <input class="registration__form-group-item" type="text" name="phone" placeholder="Телефон"
-                       required
-                       minlength="10"
-                       maxlength="15"
-                       pattern="\+?\d{10,15}"
-                       title="Номер телефона должен состоять из 10–15 цифр и может начинаться с +.">
+                       required                       
+                       title="Номер телефона не может быть пустым.">
                 @Html.ValidationMessageFor(x => x.Phone)
             </div>
             <div class="registration__form-group">
                 <input class="registration__form-group-item" type="text" name="userName" placeholder="Имя"
-                       required
-                       minlength="3"
-                       maxlenght="20"
-                       pattern="^[a-zA-Zа-яА-Я0-9]*$"
-                       title="Имя пользователя может содержать только буквы и цифры.">
+                       required                  
+                       title="Имя пользователя не может быть пустым.">
                 @Html.ValidationMessageFor(x => x.UserName)
             </div>
             <div class="registration__form-group">
 
                 <input class="registration__form-group-item password" type="password" name="password" placeholder="Пароль"
-                       required
-                       minlength="8"
-                       maxlenght="20"
-                       pattern="(?=.*\d)(?=.*[a-zA-Zа-яА-Я]).{8,}"
-                       title="Пароль должен содержать хотя бы одну цифру, одну заглавную и одну строчную букву.">
+                       required                      
+                       title="Пароль не может быть пустым.">
                 @Html.ValidationMessageFor(x => x.Password)
                 <span class="toggle-password">👁️</span>
 

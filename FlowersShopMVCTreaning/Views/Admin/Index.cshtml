@@ -1,7 +1,67 @@
 ﻿@{
     ViewData["Title"] = "AdminPage";
 }
-<div>
-    <p>Страничка Админа</p>
-</div>
 
+@section Scripts {
+    <script src="/js/adminPage.js"></script>
+}
+
+<div class="admin_page flex">
+
+    <h2 class="admin_page_title">Добавление букета</h2>
+
+    <form action="/submit" method="post" enctype="multipart/form-data" class="admin_page_form">
+
+        <div class="admin_photo_wrapper">
+            <label for="admin_photo">Фотография букета:</label>
+            <input type="file" class="admin_photo admin_page_border" name="photo" accept="image/*">
+        </div>
+
+        <div class="admin_bouquet_wrapper">
+            <label for="admin_bouquet_name">Название букета:</label>
+            <input type="text" class="admin_bouquet_name admin_page_border" name="name">
+        </div>
+
+        <div class="admin_catalog_wrapper">
+            <label for="admin_catalog">Каталог:</label>
+            <select class="admin_catalog admin_page_border" name="catalog">
+                <option value="roses">Розы</option>
+                <option value="present">Подарки</option>
+                <option value="forWhom">Для кого</option>
+                <option value="bouquets">Букеты</option>
+                <option value="holidayCollection">Празничная коллеция</option>
+            </select>
+        </div>
+        <div class="admin_description_wrapper">
+            <label for="admin_description ">Описание:</label>
+            <textarea class="admin_description admin_page_border" name="description"></textarea>
+        </div>
+
+        <div class="admin_price_wrapper">
+            <label for="admin_price">Цена:</label>
+            <input type="number" class="admin_price admin_page_border" name="price" min="0">
+        </div>
+
+        <div class="admin_bestseller_wrapper">
+            <label>Дополнительные характеристики:</label>
+            <label for="admin_bestseller">Хит продаж</label>
+            <input type="checkbox" class="admin_bestseller" name="bestseller">
+
+            <label for="admin_newarrival">Новинка</label>
+            <input type="checkbox" class="admin_newarrival" name="newarrival">
+
+            <label for="admin_dealofday">Букет дня</label>
+            <input type="checkbox" class="admin_dealofday" name="dealofday">
+
+        </div>
+
+        <div class="admin_discount_wrapper">
+            <label for="admin_discount">Скидка (0-50%):</label>
+            <input type="number" class="admin_discount admin_page_border" name="discount" min="0" max="50">
+            <div class="discount_value"></div>
+        </div>
+
+        <input type="submit" value="Добавить" class="admin_page_btn btn-reset registration-btn">
+    </form>
+
+</div>

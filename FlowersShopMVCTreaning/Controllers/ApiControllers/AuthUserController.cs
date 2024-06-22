@@ -16,8 +16,24 @@ namespace FlowersShopMVCTraining.Controllers.ApiControllers
 
         public bool IsLoginAvailable(string login)
         {
+            if (login.Length < 3 || login.Length > 20 || login.Length == 0)
+            {
+                return false;
+            }
              return !_userRepository.ExistName(login);
         }
-     
+        public bool IsPhoneAvailable(string phone)
+        {
+            if (!long.TryParse(phone, out _))
+            {                
+                return false;
+            }
+
+            if (phone.Length < 8 || phone.Length > 20 || phone.Length == 0)
+            {
+                return false;
+            }
+            return !_userRepository.ExistPhone(phone);
+        }
     }
 }

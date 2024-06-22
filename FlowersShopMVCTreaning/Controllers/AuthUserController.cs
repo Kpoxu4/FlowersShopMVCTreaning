@@ -43,11 +43,17 @@ namespace FlowersShopMVCTraining.Controllers
             }
 
             var user = _userRepository.GetRegistrationUser(viewModel.UserName);
+            if (user == null)
+            {
+                ModelState.AddModelError("UserName", "Пользователь с таким именем не найден.");
+                return View(viewModel);
+            }
+
             var isPasswordCorrect = _hashingService.VerifyPassword(user.Password, viewModel.Password);
 
-            if (user == null && !isPasswordCorrect)
+            if (!isPasswordCorrect)
             {
-                ModelState.AddModelError(string.Empty, "Пользователь с таким именем и паролем не найден.");
+                ModelState.AddModelError("Password", "Пароль не верный.");
                 return View(viewModel);
             }
 

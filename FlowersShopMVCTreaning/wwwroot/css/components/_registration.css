@@ -85,3 +85,11 @@
     margin-bottom: 30px;
     width: 200px;
 }
+
+.registration__login-validation-error, .registration__phone-validation-error {
+    background: #facfcf;
+}
+
+.registration__login-available, .registration__phone-available {
+    background: #cffad3;
+}

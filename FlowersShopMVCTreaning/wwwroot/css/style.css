@@ -16,6 +16,7 @@
 @import "./components/_offer-your-bouquet.css";
 @import "./components/_footer.css";
 @import "./components/_registration.css";
+@import "./components/_admin_page.css";
 
 /*media*/
 @import "./_media.css";

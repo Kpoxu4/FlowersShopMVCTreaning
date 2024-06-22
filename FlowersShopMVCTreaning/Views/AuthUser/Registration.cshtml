@@ -16,13 +16,13 @@
         </p>
         <form method="post" class="registration-form">
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="text" name="phone" placeholder="Телефон"
+                <input class="registration__form-group-item registration_phone" type="text" name="phone" placeholder="Телефон"
                        required                       
                        title="Номер телефона не может быть пустым.">
                 @Html.ValidationMessageFor(x => x.Phone)
             </div>
             <div class="registration__form-group">
-                <input class="registration__form-group-item" type="text" name="userName" placeholder="Имя"
+                <input class="registration__form-group-item registration_login" type="text" name="userName" placeholder="Имя"
                        required                  
                        title="Имя пользователя не может быть пустым.">
                 @Html.ValidationMessageFor(x => x.UserName)

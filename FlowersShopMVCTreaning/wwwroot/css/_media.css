@@ -1,271 +1,365 @@
-@media (max-width: 1220px){
-   .slider__item {
+@media (max-width: 1220px) {
+    .slider__item {
         flex: 0 0 calc(34.5% - 18px);
-    }   
-    .catalog__items-big{
-        grid-column: span 8;       
     }
+
+    .catalog__items-big {
+        grid-column: span 8;
+    }
+
     .catalog__items_litle {
-        grid-column: span 4;        
+        grid-column: span 4;
     }
-    .offer-your-bouquet-img{
-       display: none;
+
+    .offer-your-bouquet-img {
+        display: none;
     }
-    .offer-your-bouquet__form-wrapper{
+
+    .offer-your-bouquet__form-wrapper {
         flex-wrap: nowrap;
         justify-content: center;
     }
 }
+
 @media (max-width: 1100px) {
-    .why-us__item-bg-first::before{
-       width: 55%;
+    .why-us__item-bg-first::before {
+        width: 55%;
     }
+
     .why-us__item-bg-second::before {
         width: 66%;
     }
+
     .why-us__item-bg-third::before {
         width: 55%;
     }
-    .catalog{
-    padding-top: 20px;
-    padding-bottom: 20px;
+
+    .catalog {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
-    .delivery{   
-    background-size: 100%;    
-    background-color: var(--backlight-color);
+
+    .delivery {
+        background-size: 100%;
+        background-color: var(--backlight-color);
     }
-    .delivery__title{
-    padding: 40px 0 70px 84px;
+
+    .delivery__title {
+        padding: 40px 0 70px 84px;
+    }
+
+    .admin_page {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .admin_photo_wrapper {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
-@media (max-width: 920px){
-   .slider__item {
+
+@media (max-width: 920px) {
+    .slider__item {
         flex: 0 0 calc(52% - 18px);
     }
+
     .why-us__item-bg-first::before {
         width: 60%;
     }
+
     .why-us__item-bg-second::before {
         width: 71%;
     }
+
     .why-us__item-bg-third::before {
         width: 60%;
     }
+
     .why-us__item-bg-first-desc {
         right: 15%;
     }
+
     .why-us__item-bg-second-desc {
         right: 15%;
     }
-    .why-us__item-bg-third-desc{
+
+    .why-us__item-bg-third-desc {
         right: 15%;
-    }   
-    .delivery__title{
-    font-size: 28px;
-    color: #272626;
-    padding: 20px 0 70px 84px;
     }
-    .delivery__desc{   
-    font-size: 18px;
-    padding: 0 80px 164px 100px;
+
+    .delivery__title {
+        font-size: 28px;
+        color: #272626;
+        padding: 20px 0 70px 84px;
+    }
+
+    .delivery__desc {
+        font-size: 18px;
+        padding: 0 80px 164px 100px;
     }
 }
-@media (max-width: 920px){
-    .offer-your-bouquet__title{
+
+@media (max-width: 920px) {
+    .offer-your-bouquet__title {
         font-size: 28px;
     }
+
     .offer-your-bouquet__name,
     .offer-your-bouquet__phone,
-    .offer-your-bouquet__idea{     
-        width: 600px;        
+    .offer-your-bouquet__idea {
+        width: 600px;
         font-size: 18px;
-        line-height: 0%;        
+        line-height: 0%;
         display: flex;
         align-items: center;
         border: none;
         margin-bottom: 10px;
     }
-   
 }
 
-@media (max-width: 780px){
-    .banner{
-        padding-top: 280px;    
-        padding-bottom: 40px; 
+@media (max-width: 780px) {
+    .banner {
+        padding-top: 280px;
+        padding-bottom: 40px;
     }
-    .banner__description{      
-        font-size: 16px;      
+
+    .banner__description {
+        font-size: 16px;
     }
-    .banner__title{        
+
+    .banner__title {
         font-size: 44px;
         letter-spacing: 0;
         max-width: 500px;
     }
-    .banner__link{
+
+    .banner__link {
         display: inline-block;
         border-radius: 37px;
         background: #d7537a;
         text-align: center;
         margin-top: 35px;
-        padding: 13px 28px;        
+        padding: 13px 28px;
     }
+
     .why-us__item-bg-first::before {
         width: 80%;
     }
+
     .why-us__item-bg-second::before {
         width: 91%;
     }
+
     .why-us__item-bg-third::before {
         width: 90%;
     }
+
     .why-us__item-bg-first-desc {
         right: auto;
     }
+
     .why-us__item-bg-second-desc {
         right: auto;
     }
-    .why-us__item-bg-third-desc{
+
+    .why-us__item-bg-third-desc {
         right: auto;
+    }
+
+    .admin_page_border {
+        font-size: 70%;
+    }
+
+    .admin_description {
+        min-width: 530px;
     }
 }
 
 @media (max-width: 700px) {
-    .burger{
+    .burger {
         max-height: 15px;
         max-width: 15px;
     }
-    .burger-line{
+
+    .burger-line {
         border: 1px solid #000;
         width: 15px;
     }
-    .header__logo{
-         margin-left: 50px;
+
+    .header__logo {
+        margin-left: 50px;
     }
-    .header__logo-title{
+
+    .header__logo-title {
         font-size: 18px;
     }
-    .header__logo-desc{
-    font-size: 8px;
+
+    .header__logo-desc {
+        font-size: 8px;
     }
-    .users-tools-svg{
+
+    .users-tools-svg {
         max-width: 80%;
     }
-    .basket__items{
+
+    .basket__items {
         top: -5px;
         right: 7px;
     }
-     .banner{
-        padding-top: 290px;    
-        padding-bottom: 40px; 
+
+    .banner {
+        padding-top: 290px;
+        padding-bottom: 40px;
     }
+
     .why-us__item-bg-first::before {
         width: 100%;
     }
+
     .why-us__item-bg-second::before {
         width: 100%;
     }
+
     .why-us__item-bg-third::before {
         width: 100%;
     }
+
     .offer-your-bouquet__name,
     .offer-your-bouquet__phone,
-    .offer-your-bouquet__idea{     
-        width: 450px;    
+    .offer-your-bouquet__idea {
+        width: 450px;
     }
 }
 
 
-@media (max-width: 620px){
-   .slider__item {
+@media (max-width: 620px) {
+    .slider__item {
         flex: 0 0 calc(102% - 18px);
     }
-    .why-us__title{
+
+    .why-us__title {
         font-size: 35px;
     }
-    .why-us__item-bg-first-desc{
+
+    .why-us__item-bg-first-desc {
         padding: 40px 30px;
         width: 400px;
     }
-    .why-us__item-bg-second-desc{
+
+    .why-us__item-bg-second-desc {
         padding: 40px 30px;
         width: 400px;
     }
-    .why-us__item-bg-third-desc{
+
+    .why-us__item-bg-third-desc {
         padding: 40px 30px;
         width: 400px;
     }
-    .catalog__items-big{
-        grid-column: span 12;       
+
+    .catalog__items-big {
+        grid-column: span 12;
     }
+
     .catalog__items_litle {
         grid-column: span 12;
         flex-direction: row;
-        justify-content: space-between; 
-        gap: 10px;               
+        justify-content: space-between;
+        gap: 10px;
     }
-    .delivery__title{
-    padding: 40px 0 40px 0;
+
+    .delivery__title {
+        padding: 40px 0 40px 0;
     }
-    .delivery__desc{
+
+    .delivery__desc {
         padding: 0 10px 0 10px;
+    }
+
+    .admin_page_form {
+        gap: 20px;
+        font-size: 20px;
     }
 }
 
-@media (max-width: 460px){
-        .header__logo {
+@media (max-width: 560px) {
+    .admin_description {
+        min-width: 430px;
+    }
+}
+
+@media (max-width: 460px) {
+    .header__logo {
         margin-left: 10px;
     }
-    .header__users-tools{
+
+    .header__users-tools {
         gap: 0px;
     }
-     .banner__description{      
-        font-size: 14px;      
+
+    .banner__description {
+        font-size: 14px;
     }
-    .banner__title{        
-        font-size: 28px;     
-       
+
+    .banner__title {
+        font-size: 28px;
     }
-    .banner__link{
+
+    .banner__link {
         display: inline-block;
         border-radius: 37px;
         background: #d7537a;
         text-align: center;
         margin-top: 35px;
-        padding: 13px 28px;        
+        padding: 13px 28px;
     }
-     .banner{
-        padding-top: 290px;    
-        padding-bottom: 40px; 
+
+    .banner {
+        padding-top: 290px;
+        padding-bottom: 40px;
     }
-    .why-us__title{
+
+    .why-us__title {
         font-size: 28px;
     }
-    .why-us__item-bg-first-desc{
+
+    .why-us__item-bg-first-desc {
         padding: 20px 10px;
         width: 300px;
     }
-    .why-us__item-bg-second-desc{
+
+    .why-us__item-bg-second-desc {
         padding: 20px 10px;
         width: 300px;
     }
-    .why-us__item-bg-third-desc{
+
+    .why-us__item-bg-third-desc {
         padding: 20px 10px;
         width: 300px;
     }
+
     .offer-your-bouquet__name,
     .offer-your-bouquet__phone,
-    .offer-your-bouquet__idea{     
-        width: auto;    
+    .offer-your-bouquet__idea {
+        width: auto;
+    }
+
+    .admin_description {
+        min-width: 330px;
     }
 }
 
-@media (max-width: 400px){
-    .users-tools-svg{
+@media (max-width: 400px) {
+    .users-tools-svg {
         max-width: 60%;
     }
-    .basket__items{
+
+    .basket__items {
         top: -6px;
         right: 20px;
     }
-}
 
+    .admin_page_border {
+        font-size: 62%;
+    }
+}

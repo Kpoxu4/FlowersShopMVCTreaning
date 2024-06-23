@@ -1,4 +1,6 @@
-﻿@{
+﻿@using FlowersShopMVCTraining.Models
+@model CreatingShopCardViewModel
+@{
     ViewData["Title"] = "AdminPage";
 }
 
@@ -10,11 +12,11 @@
 
     <h2 class="admin_page_title">Добавление букета</h2>
 
-    <form action="/submit" method="post" enctype="multipart/form-data" class="admin_page_form">
+    <form action="/Admin/Index" method="post" enctype="multipart/form-data" class="admin_page_form">
 
         <div class="admin_photo_wrapper">
             <label for="admin_photo">Фотография букета:</label>
-            <input type="file" class="admin_photo admin_page_border" name="photo" accept="image/*">
+            <input type="file" class="admin_photo admin_page_border" name="photo" accept="image/*">            
         </div>
 
         <div class="admin_bouquet_wrapper">
@@ -41,18 +43,17 @@
             <label for="admin_price">Цена:</label>
             <input type="number" class="admin_price admin_page_border" name="price" min="0">
         </div>
-
+       
         <div class="admin_bestseller_wrapper">
             <label>Дополнительные характеристики:</label>
             <label for="admin_bestseller">Хит продаж</label>
-            <input type="checkbox" class="admin_bestseller" name="bestseller">
+            <input type="checkbox" class="admin_bestseller" asp-for="IsBestseller">
 
             <label for="admin_newarrival">Новинка</label>
-            <input type="checkbox" class="admin_newarrival" name="newarrival">
+            <input type="checkbox" class="admin_newarrival" asp-for="IsNewArrival">
 
             <label for="admin_dealofday">Букет дня</label>
-            <input type="checkbox" class="admin_dealofday" name="dealofday">
-
+            <input type="checkbox" class="admin_dealofday" asp-for="IsDealOfDay">
         </div>
 
         <div class="admin_discount_wrapper">

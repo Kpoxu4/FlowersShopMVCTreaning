@@ -11,5 +11,14 @@ namespace FlowersShopMVCTraining.Repository.Repository
     public class ShopCardRepository : BaseRepository<ShopCard>
     {
         public ShopCardRepository(FlowersShopDbContext dbContext) : base(dbContext) { }
+
+        public void UpdateNameImage(ShopCard shopCard)
+        {
+            var dbshopCard = Get(shopCard.Id);
+
+            dbshopCard.ImageName = shopCard.ImageName;
+
+            _dbContext.SaveChanges();
+        }
     }
 }

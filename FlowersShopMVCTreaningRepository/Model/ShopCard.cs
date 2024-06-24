@@ -11,7 +11,7 @@ namespace FlowersShopMVCTraining.Repository.Model
     {
         public string Name { get; set; }
         public string ImageName { get; set; }
-        public Catalog Catalog { get; set; }
+        public string Catalog { get; set; }
         public decimal Price { get; set; }
         public int Discount { get; set; }
         public ProductFeatures Features { get; set; }

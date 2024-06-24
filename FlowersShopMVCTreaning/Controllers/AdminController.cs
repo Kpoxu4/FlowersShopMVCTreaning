@@ -34,7 +34,7 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Index(CreatingShopCardViewModel model)
         {
-            var productDescription = CreateProductDescription(model.Description);
+            var productDescription = CreateProductDescription(model.ShopCard.Description!);
             _productDescriptionRepository.Create(productDescription);
 
             var shopCard = CreateShopCard(model, productDescription);
@@ -49,10 +49,9 @@ namespace FlowersShopMVCTraining.Controllers
             using (var fs = new FileStream(path, FileMode.Create))
             {
                 model.Photo.CopyTo(fs);
-            }
-            // вернуть все карточки в таком виде как они на главной страничке
+            }            
 
-            return View(model);
+            return View();
         }
         private ProductDescription CreateProductDescription(string description)
         {
@@ -65,11 +64,11 @@ namespace FlowersShopMVCTraining.Controllers
         {
             var features = ProductFeatures.None;
 
-            if (model.IsBestseller)
+            if (model.ShopCard.IsBestseller)
                 features |= ProductFeatures.Bestseller;
-            if (model.IsDealOfDay)
+            if (model.ShopCard.IsDealOfDay)
                 features |= ProductFeatures.DealOfDay;
-            if (model.IsNewArrival)
+            if (model.ShopCard.IsNewArrival)
                 features |= ProductFeatures.NewArrival;
 
             return features;
@@ -78,11 +77,11 @@ namespace FlowersShopMVCTraining.Controllers
         {
             return new ShopCard
             {
-                Name = model.Name,
-                ImageName = Enum.GetName(model.Catalog).ToString(),
-                Catalog = Enum.GetName(model.Catalog).ToString(),
-                Price = model.Price,
-                Discount = model.Discount,
+                Name = model.ShopCard.Name,
+                ImageName = Enum.GetName(model.ShopCard.Catalog).ToString(),
+                Catalog = Enum.GetName(model.ShopCard.Catalog).ToString(),
+                Price = model.ShopCard.Price,
+                Discount = model.ShopCard.Discount,
                 Features = GetFeatures(model),
                 ProductDescription = productDescription
             };

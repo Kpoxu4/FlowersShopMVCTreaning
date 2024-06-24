@@ -21,12 +21,12 @@
 
         <div class="admin_bouquet_wrapper">
             <label for="admin_bouquet_name">Название букета:</label>
-            <input type="text" class="admin_bouquet_name admin_page_border" name="name">
+            <input type="text" class="admin_bouquet_name admin_page_border" asp-for="ShopCard.Name">
         </div>
 
         <div class="admin_catalog_wrapper">
             <label for="admin_catalog">Каталог:</label>
-            <select class="admin_catalog admin_page_border" name="catalog">
+            <select class="admin_catalog admin_page_border" asp-for="ShopCard.Catalog">
                 <option value="roses">Розы</option>
                 <option value="present">Подарки</option>
                 <option value="forWhom">Для кого</option>
@@ -36,33 +36,57 @@
         </div>
         <div class="admin_description_wrapper">
             <label for="admin_description ">Описание:</label>
-            <textarea class="admin_description admin_page_border" name="description"></textarea>
+            <textarea class="admin_description admin_page_border" asp-for="ShopCard.Description"></textarea>
         </div>
 
         <div class="admin_price_wrapper">
             <label for="admin_price">Цена:</label>
-            <input type="number" class="admin_price admin_page_border" name="price" min="0">
+            <input type="number" class="admin_price admin_page_border" min="0" asp-for="ShopCard.Price">
         </div>
        
         <div class="admin_bestseller_wrapper">
             <label>Дополнительные характеристики:</label>
             <label for="admin_bestseller">Хит продаж</label>
-            <input type="checkbox" class="admin_bestseller" asp-for="IsBestseller">
+            <input type="checkbox" class="admin_bestseller" asp-for="ShopCard.IsBestseller">
 
             <label for="admin_newarrival">Новинка</label>
-            <input type="checkbox" class="admin_newarrival" asp-for="IsNewArrival">
+            <input type="checkbox" class="admin_newarrival" asp-for="ShopCard.IsNewArrival">
 
             <label for="admin_dealofday">Букет дня</label>
-            <input type="checkbox" class="admin_dealofday" asp-for="IsDealOfDay">
+            <input type="checkbox" class="admin_dealofday" asp-for="ShopCard.IsDealOfDay">
         </div>
 
         <div class="admin_discount_wrapper">
             <label for="admin_discount">Скидка (0-50%):</label>
-            <input type="number" class="admin_discount admin_page_border" name="discount" min="0" max="50">
+            <input type="number" class="admin_discount admin_page_border" min="0" max="50" asp-for="ShopCard.Discount">
             <div class="discount_value"></div>
         </div>
 
         <input type="submit" value="Добавить" class="admin_page_btn btn-reset registration-btn">
     </form>
+</div>
+<div class="slider__items-admin-wraper">
+    <div class="slider__item admin__item">
 
+        <div class="slider__item-wrapper-img admin__item-wrapper-img">
+            <img src="/img/slider-img.jpg" alt="img" class="slider__item-img admin__item-img">
+            <p class="slider__item-info info-bestseller admin__item-info">Хит прожаж</p>
+            <p class="slider__item-info info-new admin__item-info">Новинка</p>
+            <p class="slider__item-info info-flower-day admin__item-info">Букет дня</p>
+            <p class="slider__item-info info-sale admin__item-info">Скидка 50%</p>
+
+        </div>
+
+        <div class="slider__item-descriptions admin__item-descriptions">
+            <p class="slider__item-description admin__item-description">№225 “Ромашки для Наташки”</p>
+            <p class="slider__item-description admin__item-description">№225 “Ромашки для Наташки”</p>
+        </div>
+
+        <div class="slider__item-wrapper-price flex admin__item-wrapper-price">
+            <div class="slider__item-price admin__item-price">
+                <p class="lider__item-price-old admin__item-price-old">5 400 грн</p>
+                <p class="lider__item-price-new admin__item-price-new">6 700 грн</p>
+            </div>
+        </div>
+    </div>
 </div>

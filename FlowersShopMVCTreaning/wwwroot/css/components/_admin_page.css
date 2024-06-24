@@ -55,3 +55,11 @@
     font-size: 26px;
     padding: 30px;
 }
+.admin__item {
+    display: inline-block;
+}
+.slider__items-admin-wraper {
+    padding-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}

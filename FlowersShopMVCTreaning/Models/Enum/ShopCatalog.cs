@@ -2,10 +2,10 @@
 {
     public enum ShopCatalog
     {
-        roses = 1,
-        present = 2,
-        forWhom = 3,
-        bouquets = 4,
-        holidayCollection = 5
+        Roses = 1,
+        Present = 2,
+        ForWhom = 3,
+        Bouquets = 4,
+        HolidayCollection = 5
     }
 }

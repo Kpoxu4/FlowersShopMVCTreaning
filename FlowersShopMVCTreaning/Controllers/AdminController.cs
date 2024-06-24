@@ -15,7 +15,7 @@ namespace FlowersShopMVCTraining.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(CreatingShopCardViewModel model)// обработка даных сохранениие в базе
+        public IActionResult Index(CreatingShopCardViewModel model)
         {
             
 

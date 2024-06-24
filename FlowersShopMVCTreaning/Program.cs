@@ -24,6 +24,9 @@ builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersS
 
 //Repository
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ShopCardRepository>();
+builder.Services.AddScoped<ProductDescriptionRepository>();
+
 
 
 // Services

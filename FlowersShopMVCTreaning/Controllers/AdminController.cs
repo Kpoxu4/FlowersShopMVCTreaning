@@ -38,7 +38,7 @@ namespace FlowersShopMVCTraining.Controllers
             }
             var allCards = _shopCardRepository.GetAll();
 
-            if(allCards.Count == 0 && allCards == null)
+            if (allCards.Count == 0 && allCards == null)
             {
                 return View(model);
             }
@@ -46,13 +46,13 @@ namespace FlowersShopMVCTraining.Controllers
             model.ShopCards = new List<ShopCardViewModel>();
             model.ImageNames = new List<string>();
 
-            foreach(ShopCard item in allCards)
+            foreach (ShopCard item in allCards)
             {
                 var shopCard = new ShopCardViewModel
-                {   
+                {
                     Id = item.Id,
                     Name = item.Name,
-                    Catalog = (ShopCatalog)Enum.Parse(typeof(ShopCatalog), item.Catalog),                   
+                    Catalog = (ShopCatalog)Enum.Parse(typeof(ShopCatalog), item.Catalog),
                     Price = item.Price,
                     Discount = item.Discount
                 };
@@ -66,12 +66,15 @@ namespace FlowersShopMVCTraining.Controllers
                 model.ShopCards.Add(shopCard);
                 model.ImageNames.Add(item.ImageName);
             }
-            
+            var test = model;
             return View(model);
         }
         [HttpPost]
         public IActionResult Index(CreatingShopCardViewModel model, ShopCardViewModel card)
         {
+            card.IsNewArrival = Request.Form["isNewArrival"] == "on";
+            card.IsBestseller = Request.Form["isBestseller"] == "on";
+            card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
             model.ShopCard = card;
 
             var productDescription = CreateProductDescription(model.ShopCard.Description!);
@@ -87,7 +90,7 @@ namespace FlowersShopMVCTraining.Controllers
 
             TempData["Message"] = "Букет успешно создан";
 
-            return RedirectToAction("Index", "Admin");          
+            return RedirectToAction("Index", "Admin");
         }
         private ProductDescription CreateProductDescription(string description)
         {

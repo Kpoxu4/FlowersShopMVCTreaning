@@ -11,13 +11,15 @@ namespace FlowersShopMVCTraining.ImageProcessor
         public readonly string _outputPathLarge;
         private readonly Size _smallSize;
         private readonly Size _largeSize;
+        private int _delay;
 
-        public ImageProcessor(string outputPathSmall, string outputPathLarge, Size smallSize, Size largeSize)
+        public ImageProcessor(string outputPathSmall, string outputPathLarge, Size smallSize, Size largeSize, int delay)
         {
             _outputPathSmall = outputPathSmall;
             _outputPathLarge = outputPathLarge;
             _smallSize = smallSize;
             _largeSize = largeSize;
+            _delay = delay;
             CreateOutputDirectories();
         }    
 
@@ -33,7 +35,7 @@ namespace FlowersShopMVCTraining.ImageProcessor
 
                         ResizeAndSaveImage(imagePath, _largeSize, _outputPathLarge, image);
                     }
-                    await Task.Delay(5000);
+                    await Task.Delay(_delay);
                     File.Delete(imagePath);
 
                 }

@@ -9,14 +9,18 @@ namespace FlowersShopMVCTraining.ImageProcessor
         private readonly string _watchPath;
         private readonly ImageProcessor _imageProcessor;
         private FileSystemWatcher _watcher;
+        private int _delay;
 
 
-        public FolderMonitorAndResizer(string watchPath, string outputPathSmall, string outputPathLarge, int smallWidth, int smallHeight, int largeWidth, int largeHeight)
+        public FolderMonitorAndResizer(string watchPath, string outputPathSmall, 
+                                        string outputPathLarge, int smallWidth, 
+                                        int smallHeight, int largeWidth,
+                                        int largeHeight, int delay)
         {
             var smallSize = new Size(smallWidth, smallHeight);
             var largeSize = new Size(largeWidth, largeHeight);
-
-            _imageProcessor = new ImageProcessor(outputPathSmall, outputPathLarge, smallSize, largeSize);
+            _delay = delay;
+            _imageProcessor = new ImageProcessor(outputPathSmall, outputPathLarge, smallSize, largeSize, delay);
             _watchPath = watchPath;
             CreateWatchDirectories();
         }

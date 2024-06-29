@@ -1,11 +1,13 @@
 ﻿using FlowersShopMVCTraining.Controllers.ActionFilterAttributes;
 using FlowersShopMVCTraining.Models;
+using FlowersShopMVCTraining.Models.Enum;
 using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp;
 
 namespace FlowersShopMVCTraining.Controllers
 {
@@ -27,13 +29,51 @@ namespace FlowersShopMVCTraining.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(ShowAdminShopCardViewModel model)
         {
-            return View();
+            if (TempData["Message"] is not null)
+            {
+                model.MessageCreationCard = TempData["Message"].ToString();
+                TempData.Remove("Message");
+            }
+            var allCards = _shopCardRepository.GetAll();
+
+            if(allCards.Count == 0 && allCards == null)
+            {
+                return View(model);
+            }
+
+            model.ShopCards = new List<ShopCardViewModel>();
+            model.ImageNames = new List<string>();
+
+            foreach(ShopCard item in allCards)
+            {
+                var shopCard = new ShopCardViewModel
+                {   
+                    Id = item.Id,
+                    Name = item.Name,
+                    Catalog = (ShopCatalog)Enum.Parse(typeof(ShopCatalog), item.Catalog),                   
+                    Price = item.Price,
+                    Discount = item.Discount
+                };
+
+                shopCard.Description = _productDescriptionRepository.GetDescriptionForProduct(item.Id);
+
+                shopCard.IsBestseller = (item.Features & ProductFeatures.Bestseller) != 0 ? true : false;
+                shopCard.IsDealOfDay = (item.Features & ProductFeatures.DealOfDay) != 0 ? true : false;
+                shopCard.IsNewArrival = (item.Features & ProductFeatures.NewArrival) != 0 ? true : false;
+
+                model.ShopCards.Add(shopCard);
+                model.ImageNames.Add(item.ImageName);
+            }
+            
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Index(CreatingShopCardViewModel model)
+        public IActionResult Index(CreatingShopCardViewModel model, ShopCardViewModel card)
         {
+            model.ShopCard = card;
+
             var productDescription = CreateProductDescription(model.ShopCard.Description!);
             _productDescriptionRepository.Create(productDescription);
 
@@ -43,15 +83,11 @@ namespace FlowersShopMVCTraining.Controllers
             shopCard.ImageName += shopCard.Id.ToString();
             _shopCardRepository.UpdateNameImage(shopCard);
 
-            string fileName = model.Photo.FileName;
-            var extension = Path.GetExtension(fileName);
-            var path = _pathHelper.GetPathByFolder("img\\watch", shopCard.ImageName + extension);
-            using (var fs = new FileStream(path, FileMode.Create))
-            {
-                model.Photo.CopyTo(fs);
-            }            
+            SaveImageToFolder(model.Photo, shopCard.ImageName);
 
-            return View();
+            TempData["Message"] = "Букет успешно создан";
+
+            return RedirectToAction("Index", "Admin");          
         }
         private ProductDescription CreateProductDescription(string description)
         {
@@ -85,6 +121,16 @@ namespace FlowersShopMVCTraining.Controllers
                 Features = GetFeatures(model),
                 ProductDescription = productDescription
             };
+        }
+        private void SaveImageToFolder(IFormFile file, string imageName)
+        {
+            string fileName = file.FileName;
+            var extension = Path.GetExtension(fileName);
+            var path = _pathHelper.GetPathByFolder("img\\watch", imageName + extension);
+            using (var fs = new FileStream(path, FileMode.Create))
+            {
+                file.CopyTo(fs);
+            }
         }
     }
 

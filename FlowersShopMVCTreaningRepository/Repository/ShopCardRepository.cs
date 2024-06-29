@@ -19,6 +19,6 @@ namespace FlowersShopMVCTraining.Repository.Repository
             dbshopCard.ImageName = shopCard.ImageName;
 
             _dbContext.SaveChanges();
-        }
+        }       
     }
 }

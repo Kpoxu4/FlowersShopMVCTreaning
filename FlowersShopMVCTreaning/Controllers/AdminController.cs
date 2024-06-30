@@ -48,25 +48,10 @@ namespace FlowersShopMVCTraining.Controllers
 
             foreach (ShopCard item in allCards)
             {
-                var shopCard = new ShopCardViewModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Catalog = (ShopCatalog)Enum.Parse(typeof(ShopCatalog), item.Catalog),
-                    Price = item.Price,
-                    Discount = item.Discount
-                };
-
-                shopCard.Description = _productDescriptionRepository.GetDescriptionForProduct(item.Id);
-
-                shopCard.IsBestseller = (item.Features & ProductFeatures.Bestseller) != 0 ? true : false;
-                shopCard.IsDealOfDay = (item.Features & ProductFeatures.DealOfDay) != 0 ? true : false;
-                shopCard.IsNewArrival = (item.Features & ProductFeatures.NewArrival) != 0 ? true : false;
-
+                var shopCard = CreateShopCardViewModel(item);
                 model.ShopCards.Add(shopCard);
                 model.ImageNames.Add(item.ImageName);
             }
-            var test = model;
             return View(model);
         }
         [HttpPost]
@@ -93,6 +78,25 @@ namespace FlowersShopMVCTraining.Controllers
             Task.Delay(1000).Wait();
 
             return RedirectToAction("Index", "Admin");
+        }
+
+        private ShopCardViewModel CreateShopCardViewModel(ShopCard shopCardBd)
+        {
+            var shopCard = new ShopCardViewModel
+            {
+                Id = shopCardBd.Id,
+                Name = shopCardBd.Name,
+                Catalog = (ShopCatalog)Enum.Parse(typeof(ShopCatalog), shopCardBd.Catalog),
+                Price = shopCardBd.Price,
+                Discount = shopCardBd.Discount
+            };
+
+            shopCard.Description = _productDescriptionRepository.GetDescriptionForProduct(shopCardBd.Id);
+
+            shopCard.IsBestseller = (shopCardBd.Features & ProductFeatures.Bestseller) != 0 ? true : false;
+            shopCard.IsDealOfDay = (shopCardBd.Features & ProductFeatures.DealOfDay) != 0 ? true : false;
+            shopCard.IsNewArrival = (shopCardBd.Features & ProductFeatures.NewArrival) != 0 ? true : false;
+            return shopCard;
         }
         private ProductDescription CreateProductDescription(string description)
         {

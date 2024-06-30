@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const discountInput = $('.admin_discount');
+    const mesageCreateCard = $('.message-creation-card');
 
     discountInput.on('input', function () {
        
@@ -21,4 +22,11 @@ $(document).ready(function () {
             this.value = newValue; 
         }
     });
+    if (mesageCreateCard)
+    {
+        const buttonMessage = $('.message-creation-card-btn');
+        buttonMessage.on('click', function () {
+            mesageCreateCard.hide();
+        });
+    }
 });

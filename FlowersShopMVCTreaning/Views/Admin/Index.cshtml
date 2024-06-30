@@ -7,8 +7,18 @@
 @section Scripts {
     <script src="/js/adminPage.js"></script>
 }
-@* TODO MESSEGA for user *@
 
+<!-- Contents of the modal window -->
+@if (Model.MessageCreationCard != null)
+{
+    <div class="message-creation-card window-message-for-user">
+        <div class="message-creation-card-content window-message-for-user-content">
+            <p>@Model.MessageCreationCard</p>
+            <button class="message-creation-card-btn btn-reset window-message-for-user-btn">OK</button>
+        </div>
+    </div>
+}
+<!-- Form for Add Card -->
 <div class="admin_page flex">
 
     <h2 class="admin_page_title">Добавление букета</h2>
@@ -66,7 +76,7 @@
         <input type="submit" value="Добавить" class="admin_page_btn btn-reset registration-btn">
     </form>
 </div>
-
+<!-- Show  Cards -->
 @if (Model is not null)
 {
     <div class="slider__items-admin-wraper flex">

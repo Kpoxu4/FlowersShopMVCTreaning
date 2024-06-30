@@ -33,7 +33,7 @@ namespace FlowersShopMVCTraining.Controllers
         {
             if (TempData["Message"] is not null)
             {
-                model.MessageCreationCard = TempData["Message"].ToString();
+                model.MessageCreationCard = TempData["Message"]?.ToString();
                 TempData.Remove("Message");
             }
             var allCards = _shopCardRepository.GetAll();

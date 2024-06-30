@@ -91,12 +91,12 @@
     margin-left: 20px;
     text-align: center;
 }
-.lider__item-price-old{
+.slider__item-price-old{
     font-size: 13px;
     text-decoration: line-through;
     color: #8e8d6f;
 }
-.lider__item-price-new{
+.slider__item-price-new{
     margin-top: 5px;
     font-size: 16px;
     color: #7ea048;

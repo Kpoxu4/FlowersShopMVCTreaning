@@ -22,6 +22,7 @@ $(document).ready(function () {
             this.value = newValue; 
         }
     });
+
     if (mesageCreateCard)
     {
         const buttonMessage = $('.message-creation-card-btn');
@@ -29,4 +30,20 @@ $(document).ready(function () {
             mesageCreateCard.hide();
         });
     }
+    
+    $(document).on('click', function (event) {
+        const target = $(event.target);
+        if (!target.closest('.admin__item').length) {
+            $('.wrapper-admin-change-buttons').hide();
+        }
+    });
+    $('.admin__item').on('click', function () {
+        const buttons = $(this).find('.wrapper-admin-change-buttons');
+        if (buttons.is(':visible')) {
+            buttons.hide();
+        } else {
+            buttons.show();
+        }
+        $(this).siblings().find('.wrapper-admin-change-buttons').hide();
+    });
 });

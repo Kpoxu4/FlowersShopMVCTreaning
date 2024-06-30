@@ -75,7 +75,7 @@ namespace FlowersShopMVCTraining.Controllers
 
             TempData["Message"] = "Букет успешно создан";
 
-            Task.Delay(1000).Wait();
+            Task.Delay(2000).Wait();
 
             return RedirectToAction("Index", "Admin");
         }

@@ -6,6 +6,7 @@
 
 @section Scripts {
     <script src="/js/adminPage.js"></script>
+    <script src="/js/adminPageDeleteRequest.js"></script>
 }
 
 <!-- Contents of the modal window -->
@@ -82,7 +83,7 @@
     <div class="slider__items-admin-wraper flex">
         @foreach (ShopCardViewModel item in Model.ShopCards)
         {
-            <div class="slider__item admin__item">
+            <div class="slider__item admin__item" data-item-id="@item.Id">
 
                 <div class="slider__item-wrapper-img admin__item-wrapper-img">
 
@@ -122,16 +123,19 @@
                     <div class="slider__item-price admin__item-price">
                         @if (item.Discount != 0)
                         {
-                            <p class="lider__item-price-old admin__item-price-old">@item.Price грн</p>
-                            <p class="lider__item-price-new admin__item-price-new">@((item.Price - item.Price * item.Discount / 100)) грн</p>
+                            <p class="slider__item-price-old admin__item-price-old">@item.Price грн</p>
+                            <p class="slider__item-price-new admin__item-price-new">@((item.Price - item.Price * item.Discount / 100)) грн</p>
 
                         }
                         else
                         {
-                            <p class="lider__item-price-new admin__item-price-new">@item.Price</p>
+                            <p class="slider__item-price-new admin__item-price-new">@item.Price</p>
                         }
-
                     </div>
+                </div>
+                <div class="wrapper-admin-change-buttons">
+                    <input type="submit" value="Удалить" class="admin_page_btn btn-reset registration-btn admin-change-button-del">
+                    <input type="submit" value="Изменить" class="admin_page_btn btn-reset registration-btn  admin-change-button-update">
                 </div>
             </div>
         }

@@ -57,9 +57,14 @@
 }
 .admin__item {
     display: inline-block;
+    cursor: pointer;
 }
 .slider__items-admin-wraper {
     padding-top: 200px;
     display: flex;
     flex-wrap: wrap;
+}
+.wrapper-admin-change-buttons{
+    cursor: pointer;
+    display: none;
 }

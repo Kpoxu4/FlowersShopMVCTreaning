@@ -60,6 +60,7 @@ namespace FlowersShopMVCTraining.Controllers
             card.IsNewArrival = Request.Form["isNewArrival"] == "on";
             card.IsBestseller = Request.Form["isBestseller"] == "on";
             card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
+
             model.ShopCard = card;
 
             var productDescription = CreateProductDescription(model.ShopCard.Description!);
@@ -76,6 +77,33 @@ namespace FlowersShopMVCTraining.Controllers
             TempData["Message"] = "Букет успешно создан";
 
             Task.Delay(2000).Wait();
+
+            return RedirectToAction("Index", "Admin");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateCard(int cardId)
+        {
+            var shopCardBd = _shopCardRepository.Get(cardId);   
+            var shopCardModel = CreateShopCardViewModel(shopCardBd);
+
+            return View(shopCardModel);
+        }
+        [HttpPost]
+        public IActionResult UpdateCard(ShopCardViewModel card)
+        {
+            card.IsNewArrival = Request.Form["isNewArrival"] == "on";
+            card.IsBestseller = Request.Form["isBestseller"] == "on";
+            card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
+
+            var discriptionId = _shopCardRepository.GetDescriptionId(card.Id);
+            _productDescriptionRepository.ChengeText(discriptionId, card.Description);
+
+            var ShopCardDb = UpddateShopCard(card);
+
+            _shopCardRepository.Update(ShopCardDb);
+
+            TempData["Message"] = "Букет успешно обновлен";
 
             return RedirectToAction("Index", "Admin");
         }
@@ -105,18 +133,30 @@ namespace FlowersShopMVCTraining.Controllers
                 Text = description
             };
         }
-        private ProductFeatures GetFeatures(CreatingShopCardViewModel model)
+        private ProductFeatures GetFeatures(bool isBestseller, bool isDealOfDay, bool newArrival)
         {
             var features = ProductFeatures.None;
 
-            if (model.ShopCard.IsBestseller)
+            if (isBestseller)
                 features |= ProductFeatures.Bestseller;
-            if (model.ShopCard.IsDealOfDay)
+            if (isDealOfDay)
                 features |= ProductFeatures.DealOfDay;
-            if (model.ShopCard.IsNewArrival)
+            if (newArrival)
                 features |= ProductFeatures.NewArrival;
 
             return features;
+        }
+        private ShopCard UpddateShopCard(ShopCardViewModel card)
+        {
+            return new ShopCard
+            {
+                Id = card.Id,
+                Name = card.Name,                
+                Catalog = Enum.GetName(card.Catalog).ToString(),
+                Price = card.Price,
+                Discount = card.Discount,
+                Features = GetFeatures(card.IsBestseller, card.IsDealOfDay, card.IsNewArrival),
+            };
         }
         private ShopCard CreateShopCard(CreatingShopCardViewModel model, ProductDescription productDescription)
         {
@@ -127,7 +167,7 @@ namespace FlowersShopMVCTraining.Controllers
                 Catalog = Enum.GetName(model.ShopCard.Catalog).ToString(),
                 Price = model.ShopCard.Price,
                 Discount = model.ShopCard.Discount,
-                Features = GetFeatures(model),
+                Features = GetFeatures(model.ShopCard.IsBestseller, model.ShopCard.IsDealOfDay, model.ShopCard.IsNewArrival),
                 ProductDescription = productDescription
             };
         }

@@ -9,7 +9,7 @@ namespace FlowersShopMVCTraining.Models
         private const string ERROR_PRICE = "Цена должна быть положительным числом.";
         private const string ERROR_DISCOUNT = "Цена должна быть числом от 0 до 50.";
                 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         [Required]
         [StringLength(19, MinimumLength = 3, ErrorMessage = "Название должны быть от 3 до 19 символов включая пробелы")]
         public string Name { get; set; }

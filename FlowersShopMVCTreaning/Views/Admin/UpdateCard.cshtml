@@ -1,0 +1,88 @@
+﻿@using FlowersShopMVCTraining.Models.Enum
+@using FlowersShopMVCTraining.Models
+@model ShopCardViewModel
+
+@{
+    ViewData["Title"] = "UpdatePage";
+}
+
+<div class="admin_page flex">
+
+    <h2 class="admin_page_title">Изменение букета</h2>
+
+    <form action="/Admin/UpdateCard/@Model.Id" method="post" enctype="multipart/form-data" class="admin_page_form">
+
+        <div class="admin_bouquet_wrapper">
+            <p class="page-old-item">Название букета: @Model.Name</p>
+            <label for="admin_bouquet_name">Новое название букета:</label>
+            <input type="text" class="admin_bouquet_name admin_page_border" name="name">
+        </div>
+            
+        <div class="admin_catalog_wrapper">
+            <p class="page-old-item">Каталог букета:
+                @if (Enum.GetName(typeof(ShopCatalog), Model.Catalog) == "Roses")
+                {
+                    <span>Розы</span>
+                }
+                @if (Enum.GetName(typeof(ShopCatalog), Model.Catalog) == "Present")
+                {
+                    <span>Подарки</span>
+                }
+                @if (Enum.GetName(typeof(ShopCatalog), Model.Catalog) == "ForWhom")
+                {
+                    <span>Для кого</span>
+                }
+                @if (Enum.GetName(typeof(ShopCatalog), Model.Catalog) == "Bouquets")
+                {
+                    <span>Букеты</span>
+                }
+                @if (Enum.GetName(typeof(ShopCatalog), Model.Catalog) == "HolidayCollection")
+                {
+                    <span>Праздничная коллекция</span>
+                }
+            </p>
+            <label for="admin_catalog">Новый каталог:</label>
+            <select class="admin_catalog admin_page_border" name="catalog">
+                <option value="roses">Розы</option>
+                <option value="present">Подарки</option>
+                <option value="forWhom">Для кого</option>
+                <option value="bouquets">Букеты</option>
+                <option value="holidayCollection">Праздничная коллекция</option>
+            </select>
+        </div>
+        <div class="admin_description_wrapper">
+            <p class="page-old-item">Описание букета:"@Model.Description"</p>
+            <label for="admin_description">Новое описание:</label>
+            <textarea class="admin_description admin_page_border" name="description"></textarea>
+        </div>
+
+        <div class="admin_price_wrapper">
+            <p class="page-old-item">Цена букета: @Model.Price</p>
+            <label for="admin_price">Новая цена:</label>
+            <input type="number" class="admin_price admin_page_border" min="0" name="price">
+        </div>
+
+        <div class="admin_bestseller_wrapper">
+            <label>Дополнительные характеристики:</label>
+            <label for="admin_bestseller">Хит продаж</label>
+            <input type="checkbox" class="admin_bestseller" name="isBestseller"
+                                        @(Model.IsBestseller ? "checked" : "" ) />
+            <label for="admin_newarrival">Новинка</label>
+            <input type="checkbox" class="admin_newarrival" name="isNewArrival"
+                                        @(Model.IsNewArrival ? "checked" : "") />
+          
+            <label for="admin_dealofday">Букет дня</label>
+            <input type="checkbox" class="admin_dealofday" name="isDealOfDay"
+                                        @(Model.IsDealOfDay ? "checked" : "") />
+        </div>
+
+        <div class="admin_discount_wrapper">
+            <p class="page-old-item">Скидка на букет: @Model.Discount%</p>
+            <label for="admin_discount">Новая скидка (0-50%):</label>
+            <input type="number" class="admin_discount admin_page_border" min="0" max="50" name="discount">
+            <div class="discount_value"></div>
+        </div>
+
+        <input type="submit" value="Изменить" class="update-btn btn-reset registration-btn">
+    </form>
+</div>

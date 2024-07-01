@@ -23,7 +23,7 @@ namespace FlowersShopMVCTrainingRepository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ShopCard>()
-                .HasOne(x => x.ProductDescription);    
+                .HasOne(x => x.ProductDescription);
         }
     }
 }

@@ -68,3 +68,6 @@
     cursor: pointer;
     display: none;
 }
+.page-old-item {
+    text-align:left;
+}

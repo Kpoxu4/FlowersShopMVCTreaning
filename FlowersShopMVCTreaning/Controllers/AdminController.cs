@@ -7,6 +7,7 @@ using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SixLabors.ImageSharp;
 
 namespace FlowersShopMVCTraining.Controllers
@@ -57,11 +58,21 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Index(CreatingShopCardViewModel model, ShopCardViewModel card)
         {
+            
+
             card.IsNewArrival = Request.Form["isNewArrival"] == "on";
             card.IsBestseller = Request.Form["isBestseller"] == "on";
             card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
 
             model.ShopCard = card;
+
+           
+            if (!ModelState.IsValid)
+            {
+                var firstError = ModelState.Values.SelectMany(v => v.Errors).Select(x => x.ErrorMessage).First();
+                TempData["Message"] = $"Букет не создан: {firstError}";
+                return RedirectToAction("Index", "Admin");
+            }
 
             var productDescription = CreateProductDescription(model.ShopCard.Description!);
             _productDescriptionRepository.Create(productDescription);
@@ -84,7 +95,7 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpGet]
         public IActionResult UpdateCard(int cardId)
         {
-            var shopCardBd = _shopCardRepository.Get(cardId);   
+            var shopCardBd = _shopCardRepository.Get(cardId);
             var shopCardModel = CreateShopCardViewModel(shopCardBd);
 
             return View(shopCardModel);
@@ -99,13 +110,38 @@ namespace FlowersShopMVCTraining.Controllers
             var discriptionId = _shopCardRepository.GetDescriptionId(card.Id);
             _productDescriptionRepository.ChengeText(discriptionId, card.Description);
 
+            var imageName = _shopCardRepository.GetImageName(card.Id);
+
             var ShopCardDb = UpddateShopCard(card);
+            ShopCardDb.ImageName += ShopCardDb.Id.ToString();
 
             _shopCardRepository.Update(ShopCardDb);
+
+            var newNameFile = ShopCardDb.ImageName;
+
+            if (!string.Equals(imageName, newNameFile))
+            {
+                RenameImage(newNameFile, imageName);
+            }
 
             TempData["Message"] = "Букет успешно обновлен";
 
             return RedirectToAction("Index", "Admin");
+        }
+        private void RenameImage(string newName, string oldName)
+        {
+
+            var imageOldFileFileLarge = _pathHelper.GetPathByFolder("img\\output\\large", oldName + ".jpg");
+            var imageOldFileFileSmall = _pathHelper.GetPathByFolder("img\\output\\small", oldName + ".jpg");
+
+            FileInfo fileInfoLarge = new FileInfo(imageOldFileFileLarge);
+            FileInfo fileInfoSmall = new FileInfo(imageOldFileFileSmall);
+
+            var newFilePathLarge = Path.Combine(fileInfoLarge.Directory.FullName, newName + ".jpg");
+            var newFilePathSmall = Path.Combine(fileInfoSmall.Directory.FullName, newName + ".jpg");
+
+            fileInfoLarge.MoveTo(newFilePathLarge);
+            fileInfoSmall.MoveTo(newFilePathSmall);
         }
 
         private ShopCardViewModel CreateShopCardViewModel(ShopCard shopCardBd)
@@ -151,8 +187,9 @@ namespace FlowersShopMVCTraining.Controllers
             return new ShopCard
             {
                 Id = card.Id,
-                Name = card.Name,                
+                Name = card.Name,
                 Catalog = Enum.GetName(card.Catalog).ToString(),
+                ImageName = Enum.GetName(card.Catalog).ToString(),
                 Price = card.Price,
                 Discount = card.Discount,
                 Features = GetFeatures(card.IsBestseller, card.IsDealOfDay, card.IsNewArrival),

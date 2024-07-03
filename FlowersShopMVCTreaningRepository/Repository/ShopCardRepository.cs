@@ -14,13 +14,6 @@ namespace FlowersShopMVCTraining.Repository.Repository
     {
         public ShopCardRepository(FlowersShopDbContext dbContext) : base(dbContext) { }
 
-
-        public string Name { get; set; }
-       
-        public string Catalog { get; set; }
-        public decimal Price { get; set; }
-        public int Discount { get; set; }
-        public ProductFeatures Features { get; set; }
         public void Update(ShopCard shopCard)
         {
             var dbshopCard = Get(shopCard.Id);
@@ -33,11 +26,15 @@ namespace FlowersShopMVCTraining.Repository.Repository
             {
                 dbshopCard.Catalog = shopCard.Catalog;
             }
+            if (dbshopCard.ImageName != null)
+            {
+                dbshopCard.ImageName = shopCard.ImageName;
+            }
             if (shopCard.Price != 0)
             {
                 dbshopCard.Price = shopCard.Price;
             }
-            if(shopCard.Discount != 0)
+            if(shopCard.Discount != null)
             {
                 dbshopCard.Discount = shopCard.Discount;
             }
@@ -60,6 +57,9 @@ namespace FlowersShopMVCTraining.Repository.Repository
                             .FirstOrDefault(x => x.Id == shopCardId).ProductDescription.Id;
             return descriptionId;
         }
-
+        public string GetImageName(int shopCardId)
+        {
+            return Get(shopCardId)!.ImageName;
+        }
     }
 }

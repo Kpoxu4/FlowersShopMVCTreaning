@@ -77,7 +77,18 @@
         </div>
 
         <div class="admin_discount_wrapper">
-            <p class="page-old-item">Скидка на букет: @Model.Discount%</p>
+            <p class="page-old-item">Скидка на букет: 
+                @if (Model.Discount == null)
+                {
+                    <span>0</span>
+                }
+                else
+                {
+                    <span>
+                        @Model.Discount%
+                    </span>
+                }
+                </p>
             <label for="admin_discount">Новая скидка (0-50%):</label>
             <input type="number" class="admin_discount admin_page_border" min="0" max="50" name="discount">
             <div class="discount_value"></div>

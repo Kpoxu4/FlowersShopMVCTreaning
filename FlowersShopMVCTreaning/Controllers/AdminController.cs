@@ -58,21 +58,14 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult Index(CreatingShopCardViewModel model, ShopCardViewModel card)
         {
-            
-
-            card.IsNewArrival = Request.Form["isNewArrival"] == "on";
-            card.IsBestseller = Request.Form["isBestseller"] == "on";
-            card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
-
-            model.ShopCard = card;
-
-           
             if (!ModelState.IsValid)
             {
                 var firstError = ModelState.Values.SelectMany(v => v.Errors).Select(x => x.ErrorMessage).First();
                 TempData["Message"] = $"Букет не создан: {firstError}";
                 return RedirectToAction("Index", "Admin");
             }
+
+            model.ShopCard = card;
 
             var productDescription = CreateProductDescription(model.ShopCard.Description!);
             _productDescriptionRepository.Create(productDescription);
@@ -103,10 +96,6 @@ namespace FlowersShopMVCTraining.Controllers
         [HttpPost]
         public IActionResult UpdateCard(ShopCardViewModel card)
         {
-            card.IsNewArrival = Request.Form["isNewArrival"] == "on";
-            card.IsBestseller = Request.Form["isBestseller"] == "on";
-            card.IsDealOfDay = Request.Form["isDealOfDay"] == "on";
-
             var discriptionId = _shopCardRepository.GetDescriptionId(card.Id);
             _productDescriptionRepository.ChengeText(discriptionId, card.Description);
 

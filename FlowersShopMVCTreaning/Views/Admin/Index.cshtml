@@ -59,13 +59,13 @@
         <div class="admin_bestseller_wrapper">
             <label>Дополнительные характеристики:</label>
             <label for="admin_bestseller">Хит продаж</label>
-            <input type="checkbox" class="admin_bestseller" name="isBestseller">
+            <input type="checkbox" class="admin_bestseller" name="isBestseller" value ="true">
 
             <label for="admin_newarrival">Новинка</label>
-            <input type="checkbox" class="admin_newarrival" name="isNewArrival">
+            <input type="checkbox" class="admin_newarrival" name="isNewArrival" value ="true">
 
             <label for="admin_dealofday">Букет дня</label>
-            <input type="checkbox" class="admin_dealofday" name="isDealOfDay">
+            <input type="checkbox" class="admin_dealofday" name="isDealOfDay" value ="true">
         </div>
 
         <div class="admin_discount_wrapper">
@@ -98,7 +98,7 @@
                     <img src="/img/output/small/@Model.ImageName" alt="img" class="slider__item-img admin__item-img">
                     @if (item.IsBestseller)
                     {
-                        <p class="slider__item-info info-bestseller admin__item-info">Хит прожаж</p>
+                        <p class="slider__item-info info-bestseller admin__item-info">Хит продаж</p>
                     }
                     @if (item.IsNewArrival)
                     {

@@ -65,14 +65,14 @@
         <div class="admin_bestseller_wrapper">
             <label>Дополнительные характеристики:</label>
             <label for="admin_bestseller">Хит продаж</label>
-            <input type="checkbox" class="admin_bestseller" name="isBestseller"
+            <input type="checkbox" class="admin_bestseller" name="isBestseller" value ="true"
                                         @(Model.IsBestseller ? "checked" : "" ) />
             <label for="admin_newarrival">Новинка</label>
-            <input type="checkbox" class="admin_newarrival" name="isNewArrival"
+            <input type="checkbox" class="admin_newarrival" name="isNewArrival" value ="true"
                                         @(Model.IsNewArrival ? "checked" : "") />
           
             <label for="admin_dealofday">Букет дня</label>
-            <input type="checkbox" class="admin_dealofday" name="isDealOfDay"
+            <input type="checkbox" class="admin_dealofday" name="isDealOfDay" value ="true"
                                         @(Model.IsDealOfDay ? "checked" : "") />
         </div>
 

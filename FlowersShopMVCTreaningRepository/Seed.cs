@@ -17,6 +17,13 @@ namespace FlowersShopMVCTraining.Repository
             using var service = serviceProvider.CreateScope();
 
             FillUsers(service);
+            FillShopCards(service);
+
+        }
+
+        private void FillShopCards(IServiceScope service)
+        {
+            var shopCardRepository = service.ServiceProvider.GetService<ShopCardRepository>();
 
         }
 

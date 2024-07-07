@@ -24,10 +24,8 @@ builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersS
 
 //Repository
 builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<ShopCardRepository>();
 builder.Services.AddScoped<ProductDescriptionRepository>();
-
-
+builder.Services.AddScoped<ShopCardRepository>();
 
 // Services
 builder.Services.AddScoped<AuthService>();
@@ -38,8 +36,13 @@ builder.Services.AddSignalR();
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
-var seed = new Seed();
-seed.Fill(app.Services);
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var env = services.GetRequiredService<IWebHostEnvironment>();
+    var seed = new Seed();
+    seed.Fill(services, env.WebRootPath);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -37,8 +37,7 @@ namespace FlowersShopMVCTraining.Repository.Repository
         {
             _dbSet.Add(model);
 
-            _dbContext.SaveChanges();
-
+            _dbContext.SaveChanges();            
             return model;
         }
 

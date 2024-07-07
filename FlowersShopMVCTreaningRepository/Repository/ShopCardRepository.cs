@@ -61,5 +61,14 @@ namespace FlowersShopMVCTraining.Repository.Repository
         {
             return Get(shopCardId)!.ImageName;
         }
+        public string GetDescriptionForProduct(int shopCardBdId)
+        {
+
+            var description = _dbSet
+                             .Include(x => x.ProductDescription)
+                             .FirstOrDefault(x => x.Id == shopCardBdId).ProductDescription.Text;
+
+            return description;
+        }
     }
 }

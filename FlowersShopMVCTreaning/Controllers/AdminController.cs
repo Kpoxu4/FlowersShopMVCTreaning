@@ -80,8 +80,6 @@ namespace FlowersShopMVCTraining.Controllers
 
             TempData["Message"] = "Букет успешно создан";
 
-            Task.Delay(2000).Wait();
-
             return RedirectToAction("Index", "Admin");
         }
 
@@ -144,7 +142,7 @@ namespace FlowersShopMVCTraining.Controllers
                 Discount = shopCardBd.Discount
             };
 
-            shopCard.Description = _productDescriptionRepository.GetDescriptionForProduct(shopCardBd.Id);
+            shopCard.Description = _shopCardRepository.GetDescriptionForProduct(shopCardBd.Id);
 
             shopCard.IsBestseller = (shopCardBd.Features & ProductFeatures.Bestseller) != 0 ? true : false;
             shopCard.IsDealOfDay = (shopCardBd.Features & ProductFeatures.DealOfDay) != 0 ? true : false;
@@ -208,5 +206,4 @@ namespace FlowersShopMVCTraining.Controllers
             }
         }
     }
-
 }

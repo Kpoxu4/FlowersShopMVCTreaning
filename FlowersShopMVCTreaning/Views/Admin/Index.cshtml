@@ -19,6 +19,72 @@
         </div>
     </div>
 }
+
+<!-- Show  Cards -->
+@if (Model is not null)
+{
+    <div class="slider__items-admin-wraper flex">
+        @foreach (ShopCardViewModel item in Model.ShopCards)
+        {
+            <div class="slider__item admin__item" data-item-id="@item.Id">
+
+                <div class="slider__item-wrapper-img admin__item-wrapper-img">
+
+                    @foreach (string imageName in Model.ImageNames)
+                    {
+                        if (imageName.Contains(item.Id.ToString()))
+                        {
+                            Model.ImageName = imageName + ".jpg";
+                            break;
+                        }
+                    }
+                    <img src="/img/output/small/@Model.ImageName" alt="img" class="slider__item-img admin__item-img">
+                    @if (item.IsBestseller)
+                    {
+                        <p class="slider__item-info info-bestseller admin__item-info">Хит продаж</p>
+                    }
+                    @if (item.IsNewArrival)
+                    {
+                        <p class="slider__item-info info-new admin__item-info">Новинка</p>
+                    }
+                    @if (item.IsDealOfDay)
+                    {
+                        <p class="slider__item-info info-flower-day admin__item-info">Букет дня</p>
+                    }
+                    @if (item.Discount != 0 && item.Discount != null)
+                    {
+                        <p class="slider__item-info info-sale admin__item-info">Скидка @item.Discount%</p>
+                    }
+
+                </div>
+
+                <div class="slider__item-descriptions admin__item-descriptions">
+                    <p class="slider__item-description admin__item-description">@item.Name</p>
+                </div>
+
+                <div class="slider__item-wrapper-price flex admin__item-wrapper-price">
+                    <div class="slider__item-price admin__item-price">
+                        @if (item.Discount != 0 && item.Discount != null)
+                        {
+                            <p class="slider__item-price-old admin__item-price-old">@item.Price грн</p>
+                            <p class="slider__item-price-new admin__item-price-new">@((item.Price - item.Price * item.Discount / 100)) грн</p>
+
+                        }
+                        else
+                        {
+                            <p class="slider__item-price-new admin__item-price-new">@item.Price</p>
+                        }
+                    </div>
+                </div>
+                <div class="wrapper-admin-change-buttons">
+                    <input type="submit" value="Удалить" class="admin_page_btn btn-reset registration-btn admin-change-button-del">
+                    <a href="/Admin/UpdateCard?cardId=@item.Id" class="admin_page_btn btn-reset registration-btn admin-change-button-update">Изменить</a>
+                </div>
+            </div>
+        }
+    </div>
+
+}
 <!-- Form for Add Card -->
 <div class="admin_page flex">
 
@@ -77,69 +143,5 @@
         <input type="submit" value="Добавить" class="admin_page_btn btn-reset registration-btn">
     </form>
 </div>
-<!-- Show  Cards -->
-@if (Model is not null)
-{
-    <div class="slider__items-admin-wraper flex">
-        @foreach (ShopCardViewModel item in Model.ShopCards)
-        {
-            <div class="slider__item admin__item" data-item-id="@item.Id">
 
-                <div class="slider__item-wrapper-img admin__item-wrapper-img">
-
-                    @foreach (string imageName in Model.ImageNames)
-                    {
-                        if (imageName.Contains(item.Id.ToString()))
-                        {
-                            Model.ImageName = imageName + ".jpg";
-                            break;
-                        }
-                    }
-                    <img src="/img/output/small/@Model.ImageName" alt="img" class="slider__item-img admin__item-img">
-                    @if (item.IsBestseller)
-                    {
-                        <p class="slider__item-info info-bestseller admin__item-info">Хит продаж</p>
-                    }
-                    @if (item.IsNewArrival)
-                    {
-                        <p class="slider__item-info info-new admin__item-info">Новинка</p>
-                    }
-                    @if (item.IsDealOfDay)
-                    {
-                        <p class="slider__item-info info-flower-day admin__item-info">Букет дня</p>
-                    }
-                    @if (item.Discount != 0 && item.Discount != null)
-                    {
-                        <p class="slider__item-info info-sale admin__item-info">Скидка @item.Discount%</p>
-                    }
-
-                </div>
-
-                <div class="slider__item-descriptions admin__item-descriptions">
-                    <p class="slider__item-description admin__item-description">@item.Name</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex admin__item-wrapper-price">
-                    <div class="slider__item-price admin__item-price">
-                        @if (item.Discount != 0 && item.Discount != null)
-                        {
-                            <p class="slider__item-price-old admin__item-price-old">@item.Price грн</p>
-                            <p class="slider__item-price-new admin__item-price-new">@((item.Price - item.Price * item.Discount / 100)) грн</p>
-
-                        }
-                        else
-                        {
-                            <p class="slider__item-price-new admin__item-price-new">@item.Price</p>
-                        }
-                    </div>
-                </div>
-                <div class="wrapper-admin-change-buttons">
-                    <input type="submit" value="Удалить" class="admin_page_btn btn-reset registration-btn admin-change-button-del">                    
-                    <a href="/Admin/UpdateCard?cardId=@item.Id" class="admin_page_btn btn-reset registration-btn admin-change-button-update">Изменить</a>
-                </div>
-            </div>
-        }
-    </div>
-
-}
 

@@ -1,4 +1,5 @@
 using FlowersShopMVCTraining.Controllers;
+using FlowersShopMVCTraining.Mapper;
 using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
@@ -32,7 +33,11 @@ builder.Services.AddScoped<IShopCardRepository,ShopCardRepository>();
 // Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IHashingService, HashingService>();
+builder.Services.AddScoped<IShopCardMapper, ShopCardMapper>();
 builder.Services.AddSingleton<IPathHelper, PathHelper>();
+builder.Services.AddSingleton<IImageHelper, ImageHelper>();
+
+
 
 builder.Services.AddSignalR();
 builder.Services.AddHttpContextAccessor();

@@ -3,12 +3,10 @@ using FlowersShopMVCTraining.Models;
 using FlowersShopMVCTraining.Models.Enum;
 using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
-using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
-using FlowersShopMVCTraining.Service;
+using FlowersShopMVCTraining.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SixLabors.ImageSharp;
 
 namespace FlowersShopMVCTraining.Controllers
@@ -19,11 +17,11 @@ namespace FlowersShopMVCTraining.Controllers
     {
         private IProductDescriptionRepository _productDescriptionRepository;
         private IShopCardRepository _shopCardRepository;
-        private PathHelper _pathHelper;
+        private IPathHelper _pathHelper;
 
         public AdminController(IProductDescriptionRepository productDescriptionRepository,
                                                    IShopCardRepository shopCardRepository,
-                                                                    PathHelper pathHelper)
+                                                                    IPathHelper pathHelper)
         {
             _productDescriptionRepository = productDescriptionRepository;
             _shopCardRepository = shopCardRepository;

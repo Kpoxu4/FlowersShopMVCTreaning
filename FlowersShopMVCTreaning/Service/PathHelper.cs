@@ -1,6 +1,8 @@
-﻿namespace FlowersShopMVCTraining.Service
+﻿using FlowersShopMVCTraining.Service.Interface;
+
+namespace FlowersShopMVCTraining.Service
 {
-    public class PathHelper
+    public class PathHelper : IPathHelper
     {
         private IWebHostEnvironment _webHostEnvironment;
 
@@ -18,6 +20,6 @@
             var path = Path.Combine(_webHostEnvironment.WebRootPath, pathToFolder);
             return path;
         }
-        
+
     }
 }

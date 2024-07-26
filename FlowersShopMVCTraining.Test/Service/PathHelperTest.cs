@@ -1,12 +1,8 @@
 ﻿using FlowersShopMVCTraining.Service;
+using FlowersShopMVCTraining.Service.Interface;
 using Microsoft.AspNetCore.Hosting;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowersShopMVCTraining.Test.Service
 {
@@ -15,7 +11,7 @@ namespace FlowersShopMVCTraining.Test.Service
         public const string FAKE_PROJECT_PATH = "C:\\project";
 
         private Mock<IWebHostEnvironment> _webHostEnvironmentMock;
-        private PathHelper _pathHelper;
+        private IPathHelper _pathHelper;
 
         [SetUp]
         public void SetUp()

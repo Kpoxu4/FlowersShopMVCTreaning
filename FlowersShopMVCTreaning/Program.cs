@@ -32,7 +32,7 @@ builder.Services.AddScoped<IShopCardRepository,ShopCardRepository>();
 // Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IHashingService, HashingService>();
-builder.Services.AddSingleton<PathHelper>();
+builder.Services.AddSingleton<IPathHelper, PathHelper>();
 
 builder.Services.AddSignalR();
 builder.Services.AddHttpContextAccessor();

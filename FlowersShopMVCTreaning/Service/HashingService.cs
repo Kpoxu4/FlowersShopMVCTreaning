@@ -1,6 +1,8 @@
-﻿namespace FlowersShopMVCTraining.Service
+﻿using FlowersShopMVCTraining.Service.Interface;
+
+namespace FlowersShopMVCTraining.Service
 {
-    public class HashingService
+    public class HashingService : IHashingService
     {
         private const int SaltWorkFactor = 10;
 

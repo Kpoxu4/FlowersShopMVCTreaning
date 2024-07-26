@@ -20,8 +20,8 @@ namespace FlowersShopMVCTraining.Controllers
         public const string AUTH_METHOD = "Flower";
         private IUserRepository _userRepository;
         private IAuthService _authService;
-        private HashingService _hashingService;
-        public AuthUserController(IUserRepository userRepository, IAuthService authService, HashingService hashingService)
+        private IHashingService _hashingService;
+        public AuthUserController(IUserRepository userRepository, IAuthService authService, IHashingService hashingService)
         {
             _userRepository = userRepository;
             _authService = authService;

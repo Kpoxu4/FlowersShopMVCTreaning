@@ -1,11 +1,12 @@
 ﻿using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
+using FlowersShopMVCTraining.Service.Interface;
 
 
 namespace FlowersShopMVCTraining.Service.AuthStuff
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
         private IHttpContextAccessor _httpContextAccessor;
         private IUserRepository _userRepository;
@@ -42,7 +43,7 @@ namespace FlowersShopMVCTraining.Service.AuthStuff
         {
             var userRole = GetClaimValue(AuthClaimsConstants.USER_ROLE);
             return Enum.Parse<UserRole>(userRole);
-        }       
+        }
 
         private string GetClaimValue(string claimType)
             => _httpContextAccessor

@@ -7,6 +7,7 @@ using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
 using FlowersShopMVCTraining.Service.AuthStuff;
+using FlowersShopMVCTraining.Service.Interface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -18,9 +19,9 @@ namespace FlowersShopMVCTraining.Controllers
     {
         public const string AUTH_METHOD = "Flower";
         private IUserRepository _userRepository;
-        private AuthService _authService;
+        private IAuthService _authService;
         private HashingService _hashingService;
-        public AuthUserController(IUserRepository userRepository, AuthService authService, HashingService hashingService)
+        public AuthUserController(IUserRepository userRepository, IAuthService authService, HashingService hashingService)
         {
             _userRepository = userRepository;
             _authService = authService;

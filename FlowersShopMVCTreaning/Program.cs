@@ -4,6 +4,7 @@ using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
 using FlowersShopMVCTraining.Service.AuthStuff;
+using FlowersShopMVCTraining.Service.Interface;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,7 @@ builder.Services.AddScoped<IProductDescriptionRepository,ProductDescriptionRepos
 builder.Services.AddScoped<IShopCardRepository,ShopCardRepository>();
 
 // Services
-builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<HashingService>();
 builder.Services.AddSingleton<PathHelper>();
 

@@ -20,10 +20,17 @@
     </div>
 }
 
+
 <!-- Show  Cards -->
 @if (Model is not null)
 {
+    @if (Model.ShopCards.Count > 15)
+    {
+        <a href="#add-bouquet" class="admin_page_title admin_page_title_link">Добавление букета</a>
+
+    }
     <div class="slider__items-admin-wraper flex">
+
         @foreach (ShopCardViewModel item in Model.ShopCards)
         {
             <div class="slider__item admin__item" data-item-id="@item.Id">
@@ -88,7 +95,7 @@
 <!-- Form for Add Card -->
 <div class="admin_page flex">
 
-    <h2 class="admin_page_title">Добавление букета</h2>
+    <h2 id="add-bouquet" class="admin_page_title">Добавление букета</h2>
 
     <form action="/Admin/Index" method="post" enctype="multipart/form-data" class="admin_page_form">
 
@@ -125,13 +132,13 @@
         <div class="admin_bestseller_wrapper">
             <label>Дополнительные характеристики:</label>
             <label for="admin_bestseller">Хит продаж</label>
-            <input type="checkbox" class="admin_bestseller" name="isBestseller" value ="true">
+            <input type="checkbox" class="admin_bestseller" name="isBestseller" value="true">
 
             <label for="admin_newarrival">Новинка</label>
-            <input type="checkbox" class="admin_newarrival" name="isNewArrival" value ="true">
+            <input type="checkbox" class="admin_newarrival" name="isNewArrival" value="true">
 
             <label for="admin_dealofday">Букет дня</label>
-            <input type="checkbox" class="admin_dealofday" name="isDealOfDay" value ="true">
+            <input type="checkbox" class="admin_dealofday" name="isDealOfDay" value="true">
         </div>
 
         <div class="admin_discount_wrapper">

@@ -1,6 +1,7 @@
 ﻿using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FlowersShopMVCTraining.Repository
@@ -18,7 +19,7 @@ namespace FlowersShopMVCTraining.Repository
         }
         private void FillUsers(IServiceScope service)
         {
-            var userRepository = service.ServiceProvider.GetService<UserRepository>()!;
+            var userRepository = service.ServiceProvider.GetService<IUserRepository>()!;
 
             if (!userRepository.Any())
             {
@@ -34,8 +35,8 @@ namespace FlowersShopMVCTraining.Repository
         }
         private void FillShopCards(IServiceScope service, string webRootPath)
         {
-            var shopCardRepository = service.ServiceProvider.GetService<ShopCardRepository>()!;
-            var productDescriptionRepository = service.ServiceProvider.GetService<ProductDescriptionRepository>()!;
+            var shopCardRepository = service.ServiceProvider.GetService<IShopCardRepository>()!;
+            var productDescriptionRepository = service.ServiceProvider.GetService<IProductDescriptionRepository>()!;
 
             if (!shopCardRepository.Any())
             {
@@ -452,8 +453,8 @@ namespace FlowersShopMVCTraining.Repository
             }
         }
         private void CreateShopCard(
-        ShopCardRepository shopCardRepository,
-        ProductDescriptionRepository productDescriptionRepository,
+        IShopCardRepository shopCardRepository,
+        IProductDescriptionRepository productDescriptionRepository,
         string webRootPath,
         string name,
         string imageName,

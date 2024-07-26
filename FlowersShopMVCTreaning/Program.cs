@@ -1,6 +1,7 @@
 using FlowersShopMVCTraining.Controllers;
 using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
 using FlowersShopMVCTraining.Service.AuthStuff;
 using FlowersShopMVCTrainingRepository;
@@ -23,9 +24,9 @@ builder.Services
 builder.Services.AddDbContext<FlowersShopDbContext>(x => x.UseSqlServer(FlowersShopDbContext.CONNECTION_STRING));
 
 //Repository
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<ProductDescriptionRepository>();
-builder.Services.AddScoped<ShopCardRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProductDescriptionRepository,ProductDescriptionRepository>();
+builder.Services.AddScoped<IShopCardRepository,ShopCardRepository>();
 
 // Services
 builder.Services.AddScoped<AuthService>();

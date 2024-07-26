@@ -1,5 +1,6 @@
 ﻿using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FlowersShopMVCTraining.Repository.Repository
 {
-    public class ShopCardRepository : BaseRepository<ShopCard>
+    public class ShopCardRepository : BaseRepository<ShopCard>, IShopCardRepository
     {
         public ShopCardRepository(FlowersShopDbContext dbContext) : base(dbContext) { }
 
@@ -34,7 +35,7 @@ namespace FlowersShopMVCTraining.Repository.Repository
             {
                 dbshopCard.Price = shopCard.Price;
             }
-            if(shopCard.Discount != null)
+            if (shopCard.Discount != null)
             {
                 dbshopCard.Discount = shopCard.Discount;
             }

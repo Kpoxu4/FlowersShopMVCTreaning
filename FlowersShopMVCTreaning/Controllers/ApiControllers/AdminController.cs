@@ -1,7 +1,6 @@
-﻿using FlowersShopMVCTraining.Repository.Model;
-using FlowersShopMVCTraining.Repository.Repository;
+﻿
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
-    using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowersShopMVCTraining.Controllers.ApiControllers
@@ -11,13 +10,13 @@ namespace FlowersShopMVCTraining.Controllers.ApiControllers
     public class AdminController : ControllerBase
     {
         private const string EXTENSION_IMAGE = ".jpg";
-        private ProductDescriptionRepository _productDescriptionRepository;
-        private ShopCardRepository _shopCardRepository;
+        private IProductDescriptionRepository _productDescriptionRepository;
+        private IShopCardRepository _shopCardRepository;
         private PathHelper _pathHelper;
         private ILogger<AdminController> _logger;
 
-        public AdminController(ProductDescriptionRepository productDescriptionRepository, 
-                               ShopCardRepository shopCardRepository,
+        public AdminController(IProductDescriptionRepository productDescriptionRepository, 
+                               IShopCardRepository shopCardRepository,
                                PathHelper pathHelper,
                                ILogger<AdminController> logger)
         {

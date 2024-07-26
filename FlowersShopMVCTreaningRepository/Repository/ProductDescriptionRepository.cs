@@ -1,10 +1,11 @@
 ﻿using FlowersShopMVCTraining.Repository.Model;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTrainingRepository;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace FlowersShopMVCTraining.Repository.Repository
 {
-    public class ProductDescriptionRepository : BaseRepository<ProductDescription>
+    public class ProductDescriptionRepository : BaseRepository<ProductDescription>, IProductDescriptionRepository
     {
         public ProductDescriptionRepository(FlowersShopDbContext dbContext) : base(dbContext) { }
 

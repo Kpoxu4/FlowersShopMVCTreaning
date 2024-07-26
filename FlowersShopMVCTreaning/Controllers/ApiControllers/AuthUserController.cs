@@ -1,4 +1,4 @@
-﻿using FlowersShopMVCTraining.Repository.Repository;
+﻿using FlowersShopMVCTraining.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowersShopMVCTraining.Controllers.ApiControllers
@@ -7,9 +7,9 @@ namespace FlowersShopMVCTraining.Controllers.ApiControllers
     [Route("/api/[controller]/[action]")]
     public class AuthUserController
     {
-        private UserRepository _userRepository;
+        private IUserRepository _userRepository;
 
-        public AuthUserController(UserRepository userRepository)
+        public AuthUserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

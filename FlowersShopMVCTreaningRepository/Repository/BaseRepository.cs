@@ -1,15 +1,10 @@
 ﻿using FlowersShopMVCTraining.Repository.Model;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowersShopMVCTraining.Repository.Repository
 {
-    public abstract class BaseRepository<DbModel>
-         where DbModel : BaseModel
+    public abstract class BaseRepository<DbModel> : IBaseRepository<DbModel> where DbModel : BaseModel
     {
         protected DbContext _dbContext;
         protected DbSet<DbModel> _dbSet;
@@ -37,7 +32,7 @@ namespace FlowersShopMVCTraining.Repository.Repository
         {
             _dbSet.Add(model);
 
-            _dbContext.SaveChanges();            
+            _dbContext.SaveChanges();
             return model;
         }
 

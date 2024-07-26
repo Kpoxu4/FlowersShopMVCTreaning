@@ -1,17 +1,16 @@
 ﻿using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
-using FlowersShopMVCTraining.Repository.Repository;
-using System.Security;
-using System.Security.Claims;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
+
 
 namespace FlowersShopMVCTraining.Service.AuthStuff
 {
     public class AuthService
     {
         private IHttpContextAccessor _httpContextAccessor;
-        private UserRepository _userRepository;
+        private IUserRepository _userRepository;
 
-        public AuthService(IHttpContextAccessor httpContextAccessor, UserRepository userRepository)
+        public AuthService(IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
         {
             _httpContextAccessor = httpContextAccessor;
             _userRepository = userRepository;

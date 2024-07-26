@@ -4,6 +4,7 @@ using FlowersShopMVCTraining.Models.Enum;
 using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository;
+using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,12 +17,12 @@ namespace FlowersShopMVCTraining.Controllers
     [IsAdmin]
     public class AdminController : Controller
     {
-        private ProductDescriptionRepository _productDescriptionRepository;
-        private ShopCardRepository _shopCardRepository;
+        private IProductDescriptionRepository _productDescriptionRepository;
+        private IShopCardRepository _shopCardRepository;
         private PathHelper _pathHelper;
 
-        public AdminController(ProductDescriptionRepository productDescriptionRepository,
-                                                   ShopCardRepository shopCardRepository,
+        public AdminController(IProductDescriptionRepository productDescriptionRepository,
+                                                   IShopCardRepository shopCardRepository,
                                                                     PathHelper pathHelper)
         {
             _productDescriptionRepository = productDescriptionRepository;

@@ -68,7 +68,13 @@ namespace FlowersShopMVCTraining.Repository.Repository
         }
         public List<ShopCard> GetSliderItem()
         {
-            return _dbSet.Take(10).Where(x => !(x.Features == ProductFeatures.None)).Include(x => x.ProductDescription).ToList();   
+            return _dbSet.Take(10).Where(x => !(x.Features == ProductFeatures.None)).Include(x => x.ProductDescription).ToList();
+        }
+
+        public List<ShopCard> GetCatalogItem(string catalogName)
+        {
+            var filteredItems = _dbSet.Where(c => c.Catalog == catalogName);
+            return filteredItems.ToList();
         }
     }
 }

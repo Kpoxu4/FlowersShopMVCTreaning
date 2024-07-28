@@ -130,3 +130,6 @@
 .slader__btn:active {
     background: #d7537a;; 
 }
+.slider-catalog-item {
+    margin-top: 600px;
+}

@@ -53,12 +53,12 @@
                             {
                                 <p class="slider__item-info info-sale">Скидка @item.Discount%</p>
                             }
-                            
+
 
                         </div>
 
                         <div class="slider__item-descriptions">
-                            <p class="slider__item-description">@item.Name</p>                            
+                            <p class="slider__item-description">@item.Name</p>
                         </div>
 
                         <div class="slider__item-wrapper-price flex">
@@ -129,30 +129,29 @@
         <div class="catalog__items">
 
             <div class="catalog__items-big">
-                <a href="http://localhost:3000/" class="catalog__link">
-                    @* //Todo переход на сингл пайдж апликайщен *@
+                <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Roses" })" class="catalog__link">
                     <img src="/img/catalog-roses.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Розы</p>
                 </a>
 
-                <a href="#" class="catalog__link">
+                <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Bouquets" })" class="catalog__link">
                     <img src="/img/gatalog-bouquets.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Букеты</p>
                 </a>
 
-                <a href="#" class="catalog__link">
+                <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Presents" })" class="catalog__link">
                     <img src="/img/catalog-present.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Подарки</p>
                 </a>
             </div>
 
             <div class="catalog__items_litle">
-                <a href="#" class="catalog__link">
+                <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "ForWhom" })" class="catalog__link">
                     <img src="/img/catalog-for-whom.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Для кого</p>
                 </a>
 
-                <a href="#" class="catalog__link">
+                <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "HolidayCollection" })" class="catalog__link">
                     <img src="/img/catalog-holiday-collection.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Праздничная коллекция</p>
                 </a>

@@ -8,6 +8,6 @@ namespace FlowersShopMVCTraining.Mapper
         ShopCard CreateShopCard(CreatingShopCardViewModel model, ProductDescription productDescription);
         ShopCardViewModel CreateShopCardViewModel(ShopCard shopCardBd);
         ShopCard UpddateShopCard(ShopCardViewModel card);
-        List<ShopCardViewModel> CreatedSliderCard(List<ShopCard> shopCardBd);
+        List<ShopCardViewModel> CreatedViewModelCard(List<ShopCard> shopCardBd);
     }
 }

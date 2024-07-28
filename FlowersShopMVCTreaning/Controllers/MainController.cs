@@ -12,6 +12,7 @@ namespace FlowersShopMVCTraining.Controllers
         private IShopCardRepository _shopCardRepository;
         private IShopCardMapper _shopCardMapper;
         private IImageHelper _imageHelper;
+
         public MainController(IShopCardRepository shopCardRepository, IShopCardMapper shopCardMapper, IImageHelper imageHelper)
         {
             _shopCardRepository = shopCardRepository;
@@ -21,7 +22,7 @@ namespace FlowersShopMVCTraining.Controllers
         public IActionResult Index(MainIndexViewModel model)
         {
             var shopCardDb = _shopCardRepository.GetSliderItem();
-            model.SliderCards = _shopCardMapper.CreatedSliderCard(shopCardDb);
+            model.SliderCards = _shopCardMapper.CreatedViewModelCard(shopCardDb);
             model.CardImages = _imageHelper.GetPathImages(shopCardDb);         
 
 

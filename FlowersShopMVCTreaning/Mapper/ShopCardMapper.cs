@@ -63,7 +63,7 @@ namespace FlowersShopMVCTraining.Mapper
             };
         }
 
-        public List<ShopCardViewModel> CreatedSliderCard(List<ShopCard> shopCardBd)
+        public List<ShopCardViewModel> CreatedViewModelCard(List<ShopCard> shopCardBd)
         {
             var ListShopCardViewModel = new List<ShopCardViewModel>();
             foreach (ShopCard shopCard in shopCardBd)

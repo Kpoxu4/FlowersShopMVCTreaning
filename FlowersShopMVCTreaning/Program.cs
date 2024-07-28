@@ -4,8 +4,11 @@ using FlowersShopMVCTraining.Repository;
 using FlowersShopMVCTraining.Repository.Repository;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTraining.Service;
+using FlowersShopMVCTraining.Service.Apis;
+using FlowersShopMVCTraining.Service.Apis.Interface;
 using FlowersShopMVCTraining.Service.AuthStuff;
 using FlowersShopMVCTraining.Service.Interface;
+using FlowersShopMVCTraining.Services.Apis;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +43,10 @@ builder.Services.AddSingleton<IImageHelper, ImageHelper>();
 
 
 builder.Services.AddSignalR();
+
+builder.Services.AddHttpClient<IHttpApiJoke, HttpApiJoke>(
+    t => t.BaseAddress = new Uri("https://official-joke-api.appspot.com/"));
+
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 

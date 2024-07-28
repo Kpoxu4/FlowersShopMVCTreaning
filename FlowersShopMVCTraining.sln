@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.Repo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.ImageProcessor", "FlowersShopImageProcessor\FlowersShopMVCTraining.ImageProcessor.csproj", "{FB40C40D-B6B4-43ED-9863-BA9729E1D316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowersShopMVCTraining.Test", "FlowersShopMVCTraining.Test\FlowersShopMVCTraining.Test.csproj", "{84931D41-9CB1-4167-B2A5-3B48F6050144}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB40C40D-B6B4-43ED-9863-BA9729E1D316}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84931D41-9CB1-4167-B2A5-3B48F6050144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84931D41-9CB1-4167-B2A5-3B48F6050144}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84931D41-9CB1-4167-B2A5-3B48F6050144}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84931D41-9CB1-4167-B2A5-3B48F6050144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

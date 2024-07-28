@@ -54,14 +54,20 @@
                         <a href="/Main/Index">
                         <li class="burger__menu-item">Главная</li>
                         </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Цветы</li>
+                        <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Bouquets" })">
+                        <li class="burger__menu-item">Букеты</li>
                         </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Сладости</li>
+                        <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Roses" })">
+                        <li class="burger__menu-item">Розы</li>
                         </a>
-                        <a href="#">
-                        <li class="burger__menu-item">Воздушные шарики</li>
+                        <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "Presents" })">
+                        <li class="burger__menu-item">Подарки</li>
+                        </a>
+                        <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "ForWhom" })">
+                        <li class="burger__menu-item">Для кого</li>
+                        </a>
+                        <a href="@Url.Action("Catalog", "Catalog", new { catalogName = "HolidayCollection" })">
+                        <li class="burger__menu-item">Праздничная коллекция</li>
                         </a>
                         <a href="#">
                         <li class="burger__menu-item">Услуги</li>

@@ -452,6 +452,7 @@ namespace FlowersShopMVCTraining.Repository
                 #endregion
             }
         }
+
         private void CreateShopCard(
         IShopCardRepository shopCardRepository,
         IProductDescriptionRepository productDescriptionRepository,

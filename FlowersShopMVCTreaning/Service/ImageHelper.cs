@@ -1,15 +1,28 @@
-﻿using FlowersShopMVCTraining.Service.Interface;
+﻿using FlowersShopMVCTraining.Repository.Model;
+using FlowersShopMVCTraining.Service.Interface;
 
 namespace FlowersShopMVCTraining.Service
 {
     public class ImageHelper : IImageHelper
     {
         private IPathHelper _pathHelper;
-
+       
         public ImageHelper(IPathHelper pathHelper)
         {
-            _pathHelper = pathHelper;
+            _pathHelper = pathHelper;            
         }
+
+        public Dictionary<int, string> GetPathImages(List<ShopCard> shopCards) 
+        {
+            var cardImeges = new Dictionary<int, string>();
+            foreach (var shopCard in shopCards)
+            {
+                var pathImage = $"/img/output/small/{shopCard.ImageName}.jpg";
+                cardImeges.Add(shopCard.Id, pathImage);
+            }
+            return cardImeges;
+        }
+
         public void RenameImage(string newName, string oldName)
         {
 

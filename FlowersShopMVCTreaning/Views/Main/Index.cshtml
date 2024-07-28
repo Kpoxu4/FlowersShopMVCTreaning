@@ -1,7 +1,7 @@
 ﻿@model FlowersShopMVCTraining.Models.MainIndexViewModel
 
 @{
-    ViewData["Title"] = "Main";   
+    ViewData["Title"] = "Main";
 }
 @section Scripts {
     <script src="/js/mainIndex.js"></script>
@@ -29,222 +29,58 @@
             Скидки
         </h2>
         <div class="slider__items">
+            @if (Model.SliderCards != null)
+            {
+                @foreach (var item in Model.SliderCards)
+                {
+                    <div class="slider__item">
 
-            <div class="slider__item">
+                        <div class="slider__item-wrapper-img">
+                            <img src="@Model.CardImages[item.Id]" alt="img" class="slider__item-img">
+                            @if (item.IsBestseller)
+                            {
+                                <p class="slider__item-info info-bestseller">Хит прожаж</p>
+                            }
+                            @if (item.IsNewArrival)
+                            {
+                                <p class="slider__item-info info-new">Новинка</p>
+                            }
+                            @if (item.IsDealOfDay)
+                            {
+                                <p class="slider__item-info info-flower-day">Букет дня</p>
+                            }
+                            @if (item.Discount != 0 && item.Discount != null)
+                            {
+                                <p class="slider__item-info info-sale">Скидка @item.Discount%</p>
+                            }
+                            
 
-                <div class="slider__item-wrapper-img">                   
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
+                        </div>
 
-                </div>
+                        <div class="slider__item-descriptions">
+                            <p class="slider__item-description">@item.Name</p>                            
+                        </div>
 
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
+                        <div class="slider__item-wrapper-price flex">
+                            <div class="slider__item-price">
+                                @if (item.Discount != 0 && item.Discount != null)
+                                {
+                                    <p class="slider__item-price-old">@item.Price грн</p>
+                                    <p class="slider__item-price-new">@((item.Price - item.Price * item.Discount / 100)) грн</p>
 
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="slider__item-price-old">5 400 грн</p>
-                        <p class="slider__item-price-new">6 700 грн</p>
+                                }
+                                else
+                                {
+                                    <p class="slider__item-price-new">@item.Price</p>
+                                }
+                            </div>
+
+                            <a href="#" class="slider__item-btn btn-reset">Заказать</a>
+                        </div>
+
                     </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="./img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">5 700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">4 700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">3 700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">2 700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">1 700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">600 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
-
-            <div class="slider__item">
-
-                <div class="slider__item-wrapper-img">
-                    <img src="/img/slider-img.jpg" alt="img" class="slider__item-img">
-                    <p class="slider__item-info info-bestseller">Хит прожаж</p>
-                    <p class="slider__item-info info-new">Новинка</p>
-                    <p class="slider__item-info info-flower-day">Букет дня</p>
-                    <p class="slider__item-info info-sale">Скидка 50%</p>
-
-                </div>
-
-                <div class="slider__item-descriptions">
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                    <p class="slider__item-description">№225 “Ромашки для Наташки”</p>
-                </div>
-
-                <div class="slider__item-wrapper-price flex">
-                    <div class="slider__item-price">
-                        <p class="lider__item-price-old">5 400 грн</p>
-                        <p class="lider__item-price-new">700 грн</p>
-                    </div>
-
-                    <a href="#" class="slider__item-btn btn-reset">Заказать</a>
-                </div>
-
-            </div>
+                }
+            }
         </div>
 
         <div class="slider__btn-wraper flex">
@@ -293,7 +129,8 @@
         <div class="catalog__items">
 
             <div class="catalog__items-big">
-                <a href="http://localhost:3000/" class="catalog__link"> @* //Todo переход на сингл пайдж апликайщен *@
+                <a href="http://localhost:3000/" class="catalog__link">
+                    @* //Todo переход на сингл пайдж апликайщен *@
                     <img src="/img/catalog-roses.jpg" alt="img" class="catalog__link-img">
                     <p class="catalog__link-desc">Розы</p>
                 </a>

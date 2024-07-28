@@ -9,5 +9,6 @@ namespace FlowersShopMVCTraining.Repository.Repository.Interface
         string GetImageName(int shopCardId);
         void Update(ShopCard shopCard);
         void UpdateNameImage(ShopCard shopCard);
+        List<ShopCard> GetSliderItem();
     }
 }

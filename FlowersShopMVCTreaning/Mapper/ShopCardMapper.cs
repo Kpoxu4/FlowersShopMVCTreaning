@@ -15,6 +15,7 @@ namespace FlowersShopMVCTraining.Mapper
             _shopCardRepository = shopCardRepository;
         }
 
+
         public ShopCardViewModel CreateShopCardViewModel(ShopCard shopCardBd)
         {
             var shopCard = new ShopCardViewModel
@@ -47,6 +48,7 @@ namespace FlowersShopMVCTraining.Mapper
                 Features = GetFeatures(card.IsBestseller, card.IsDealOfDay, card.IsNewArrival),
             };
         }
+
         public ShopCard CreateShopCard(CreatingShopCardViewModel model, ProductDescription productDescription)
         {
             return new ShopCard
@@ -59,6 +61,17 @@ namespace FlowersShopMVCTraining.Mapper
                 Features = GetFeatures(model.ShopCard.IsBestseller, model.ShopCard.IsDealOfDay, model.ShopCard.IsNewArrival),
                 ProductDescription = productDescription
             };
+        }
+
+        public List<ShopCardViewModel> CreatedSliderCard(List<ShopCard> shopCardBd)
+        {
+            var ListShopCardViewModel = new List<ShopCardViewModel>();
+            foreach (ShopCard shopCard in shopCardBd)
+            {
+                ListShopCardViewModel.Add(CreateShopCardViewModel(shopCard));
+            }
+
+            return ListShopCardViewModel;
         }
 
         private ProductFeatures GetFeatures(bool isBestseller, bool isDealOfDay, bool newArrival)
@@ -74,5 +87,7 @@ namespace FlowersShopMVCTraining.Mapper
 
             return features;
         }
+
+      
     }
 }

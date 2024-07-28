@@ -3,11 +3,6 @@ using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
 using FlowersShopMVCTrainingRepository;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowersShopMVCTraining.Repository.Repository
 {
@@ -70,6 +65,10 @@ namespace FlowersShopMVCTraining.Repository.Repository
                              .FirstOrDefault(x => x.Id == shopCardBdId).ProductDescription.Text;
 
             return description;
+        }
+        public List<ShopCard> GetSliderItem()
+        {
+            return _dbSet.Take(10).Where(x => !(x.Features == ProductFeatures.None)).Include(x => x.ProductDescription).ToList();   
         }
     }
 }

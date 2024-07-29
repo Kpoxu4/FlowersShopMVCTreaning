@@ -1,3 +1,8 @@
+using FlowerIdeaSubmissionApi.Repository;
+using FlowerIdeaSubmissionApi.Repository.Repository;
+using FlowerIdeaSubmissionApi.Repository.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -6,7 +11,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<FlowerIdeaSubmissionApiDbContext>(x => x.UseSqlServer(FlowerIdeaSubmissionApiDbContext.CONNECTION_STRING));
+//Repository
+builder.Services.AddScoped<IIdeaRepository, IdeaRepository>();
+
+builder.Services.AddCors(o =>
+{
+    o.AddDefaultPolicy(p =>
+    {
+        p.AllowAnyHeader();
+        p.AllowAnyMethod();        
+        p.SetIsOriginAllowed(x => true);
+        p.AllowCredentials();
+    });
+});
+
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -16,7 +37,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();

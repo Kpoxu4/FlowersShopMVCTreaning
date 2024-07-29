@@ -18,6 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHostedService<ImageProcessingService>();
+builder.Services.AddCors(x =>
+{
+    x.AddDefaultPolicy(p =>
+    {
+        p.AllowAnyMethod();
+        p.AllowAnyOrigin();
+        p.AllowAnyHeader();
+    });
+});
 
 builder.Services
     .AddAuthentication(AuthUserController.AUTH_METHOD)
@@ -58,6 +67,7 @@ using (var scope = app.Services.CreateScope())
     seed.Fill(services, env.WebRootPath);
 }
 
+app.UseCors();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

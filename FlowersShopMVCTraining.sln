@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.Repo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowersShopMVCTraining.ImageProcessor", "FlowersShopImageProcessor\FlowersShopMVCTraining.ImageProcessor.csproj", "{FB40C40D-B6B4-43ED-9863-BA9729E1D316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerIdeaSubmissionApi", "FlowerIdeaSubmissionApi\FlowerIdeaSubmissionApi.csproj", "{6AC9D7B7-B769-4ADC-BE3C-A7D419D4E240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerIdeaSubmissionApi", "FlowerIdeaSubmissionApi\FlowerIdeaSubmissionApi.csproj", "{6AC9D7B7-B769-4ADC-BE3C-A7D419D4E240}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerIdeaSubmissionApi.Repository", "FlowerIdeaSubmissionApi.Repository\FlowerIdeaSubmissionApi.Repository.csproj", "{6F6F6B25-D92D-462B-9C58-099ECA16286D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6AC9D7B7-B769-4ADC-BE3C-A7D419D4E240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AC9D7B7-B769-4ADC-BE3C-A7D419D4E240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AC9D7B7-B769-4ADC-BE3C-A7D419D4E240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F6F6B25-D92D-462B-9C58-099ECA16286D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F6F6B25-D92D-462B-9C58-099ECA16286D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F6F6B25-D92D-462B-9C58-099ECA16286D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F6F6B25-D92D-462B-9C58-099ECA16286D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

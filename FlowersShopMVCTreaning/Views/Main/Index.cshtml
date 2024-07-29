@@ -5,6 +5,7 @@
 }
 @section Scripts {
     <script src="/js/mainIndex.js"></script>
+    <script src="/js/submittingIdea.js"></script>
 }
 
 
@@ -178,22 +179,20 @@
         <h2 class="offer-your-bouquet__title">
             Предложи свой букет
         </h2>
-        <form asp-action="OfferYourBouquet" method="post" enctype="multipart/form-data">
-            <div class="offer-your-bouquet__form-wrapper flex">
+        <div class="offer-your-bouquet__form-wrapper flex">
 
-                <div class="offer-your-bouquet__input-wrapper flex">
-                    <input name="Name" placeholder="Имя" class="offer-your-bouquet__name" />
-                    <input name="Phone" placeholder="Телефон" class="offer-your-bouquet__phone" />
-                    <textarea name="Idea" placeholder="Ваша идея" class="offer-your-bouquet__idea"></textarea>
-                </div>
-
-                <img src="/img/offer-your-bouquet.jpg" alt="img" class="offer-your-bouquet-img">
-
+            <div class="offer-your-bouquet__input-wrapper flex">
+                <input name="AuthorName" placeholder="Имя" class="offer-your-bouquet__name" />
+                <input name="AuthorPhone" placeholder="Телефон" class="offer-your-bouquet__phone" />
+                <textarea name="Idea" placeholder="Ваша идея" class="offer-your-bouquet__idea"></textarea>
             </div>
-            <div class="wrapper-btn flex">
-                <button type="submit" class="offer-your-bouquet-btn btn-reset">Отправить</button>
-            </div>
-        </form>
+
+            <img src="/img/offer-your-bouquet.jpg" alt="img" class="offer-your-bouquet-img">
+
+        </div>
+        <div class="wrapper-btn flex">
+            <button class="offer-your-bouquet-btn btn-reset">Отправить</button>
+        </div>
     </div>
 </section>
 <!-- Offer-your-bouquet start-->

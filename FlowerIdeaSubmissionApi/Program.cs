@@ -1,3 +1,4 @@
+using FlowerIdeaSubmissionApi.Mapper;
 using FlowerIdeaSubmissionApi.Repository;
 using FlowerIdeaSubmissionApi.Repository.Repository;
 using FlowerIdeaSubmissionApi.Repository.Repository.Interface;
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FlowerIdeaSubmissionApiDbContext>(x => x.UseSqlServer(FlowerIdeaSubmissionApiDbContext.CONNECTION_STRING));
 //Repository
 builder.Services.AddScoped<IIdeaRepository, IdeaRepository>();
+// Services
+builder.Services.AddScoped<IIdeaMapper, IdeaMapper>();  
 
 builder.Services.AddCors(o =>
 {

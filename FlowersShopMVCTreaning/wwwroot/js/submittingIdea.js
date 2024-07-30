@@ -14,14 +14,17 @@ $(document).ready(function () {
             authorPhone: authorPhone - 0,
             text: idea
         };
-        const promise = $.post(url, body)
-        promise.done(function (response) {
-
-            console.log('Nice');            
-        });
-
-        promise.fail(function (xhr, status, error) {
-            console.error(error);
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify(body),
+            contentType: 'application/json; charset=utf-8', 
+            success: function (response) {
+                console.log('Nice');
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
         });
     };
 });

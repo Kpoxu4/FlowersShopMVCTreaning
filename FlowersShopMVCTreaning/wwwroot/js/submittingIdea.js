@@ -12,10 +12,10 @@ $(document).ready(function () {
         const messageWindow = $('.window-message-for-user');
         const messageContent = $('.window-message-for-user-content');
         const messageText = $('.window-message-for-user-text');  
-
+       
         const body = {
             authorName: authorName,
-            authorPhone: authorPhone - 0,
+            authorPhone: authorPhone,
             text: idea
         };
         $.ajax({
@@ -23,8 +23,7 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(body),
             contentType: 'application/json; charset=utf-8', 
-            success: function (response) {
-                console.log('Nice');
+            success: function (response) {                
                 if (response.message) {                         
                     messageWindow.css("display", "flex"); 
                     messageWindow.contents().show();
@@ -35,8 +34,14 @@ $(document).ready(function () {
                     $('.offer-your-bouquet__idea').val('');
                 }               
             },
-            error: function (xhr, status, error) {
-                console.error(error);
+            error: function (xhr) {                
+                const errors = JSON.parse(xhr.responseText).errors;
+                const firstProperty = Object.keys(errors)[0];
+                const firstValue = errors[firstProperty][0];
+                
+                messageWindow.css("display", "flex");
+                messageWindow.contents().show();
+                messageText.text(firstValue);  
             }
         });
     };

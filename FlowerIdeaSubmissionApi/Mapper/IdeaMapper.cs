@@ -17,7 +17,7 @@ namespace FlowerIdeaSubmissionApi.Mapper
             return new Idea
             {
                 AuthorName = idea.AuthorName,
-                AuthorPhone = idea.AuthorPhone,
+                AuthorPhone = int.Parse(idea.AuthorPhone),
                 Text = idea.Text,
             };
         }

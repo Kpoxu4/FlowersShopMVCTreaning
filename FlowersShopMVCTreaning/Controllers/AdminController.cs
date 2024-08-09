@@ -5,6 +5,7 @@ using FlowersShopMVCTraining.Models.Enum;
 using FlowersShopMVCTraining.Repository.Enum;
 using FlowersShopMVCTraining.Repository.Model;
 using FlowersShopMVCTraining.Repository.Repository.Interface;
+using FlowersShopMVCTraining.Service.Apis.Interface;
 using FlowersShopMVCTraining.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,23 +22,28 @@ namespace FlowersShopMVCTraining.Controllers
         private IPathHelper _pathHelper;
         private IImageHelper _imageHelper;
         private IShopCardMapper _shopCardMapper;
+        private IHttpIdeaSubmission _httpIdeaSubmission;
 
         public AdminController(IProductDescriptionRepository productDescriptionRepository,
                                                    IShopCardRepository shopCardRepository,
                                                                     IPathHelper pathHelper,
                                                                     IImageHelper imageHelper,
-                                                                    IShopCardMapper shopCardMapper)
+                                                                    IShopCardMapper shopCardMapper,
+                                                                    IHttpIdeaSubmission httpIdeaSubmission)
         {
             _productDescriptionRepository = productDescriptionRepository;
             _shopCardRepository = shopCardRepository;
             _pathHelper = pathHelper;
             _imageHelper = imageHelper;
             _shopCardMapper = shopCardMapper;
+            _httpIdeaSubmission = httpIdeaSubmission;
         }
 
         [HttpGet]
-        public IActionResult Index(ShowAdminShopCardViewModel model)
+        public async Task<IActionResult> Index(ShowAdminShopCardViewModel model)
         {
+            var test = await _httpIdeaSubmission.GetIdeasAsync();//Сделать вывод всех идей
+
             if (TempData["Message"] is not null)
             {
                 model.MessageCreationCard = TempData["Message"]?.ToString();

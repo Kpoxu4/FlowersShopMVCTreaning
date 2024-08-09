@@ -10,6 +10,6 @@ namespace FlowersShopMVCTraining.Service.Interface
         string GetUserName();
         UserRole GetUserRole();
         bool IsAdmin();
-        bool IsAuthenticated();
+        bool IsAuthenticated();       
     }
 }

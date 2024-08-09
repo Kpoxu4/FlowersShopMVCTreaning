@@ -21,5 +21,21 @@ namespace FlowerIdeaSubmissionApi.Mapper
                 Text = idea.Text,
             };
         }
+        public List<IdeaModel> CreatedIdeaList(List<Idea> ideas)
+        {
+            var listIdea = new List<IdeaModel>();
+
+            foreach (var idea in ideas)
+            {
+                var ideaModel = new IdeaModel
+                {
+                    AuthorName = idea.AuthorName,
+                    AuthorPhone = idea.AuthorPhone.ToString(),
+                    Text = idea.Text,
+                };
+                listIdea.Add(ideaModel);
+            }
+            return listIdea;
+        }
     }
 }

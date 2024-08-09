@@ -46,6 +46,9 @@ builder.Services.AddSignalR();
 
 builder.Services.AddHttpClient<IHttpApiJoke, HttpApiJoke>(
     t => t.BaseAddress = new Uri("https://official-joke-api.appspot.com/"));
+builder.Services.AddHttpClient<IHttpIdeaSubmission, HttpIdeaSubmission>(
+     t => t.BaseAddress = new Uri("https://localhost:7078/"));
+   
 
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();

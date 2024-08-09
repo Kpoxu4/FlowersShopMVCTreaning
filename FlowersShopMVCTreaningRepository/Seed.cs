@@ -17,8 +17,8 @@ namespace FlowersShopMVCTraining.Repository
             FillShopCards(service, webRootPath);
 
         }
-        private void FillUsers(IServiceScope service)
-        {
+        private void FillUsers(IServiceScope service)        {
+           
             var userRepository = service.ServiceProvider.GetService<IUserRepository>()!;
 
             if (!userRepository.Any())
@@ -29,6 +29,7 @@ namespace FlowersShopMVCTraining.Repository
                     Password = "$2a$10$LV.a2yacBvzVY8ZEwG/4XeppQMlYLOvSx6uqEA35ppYVAyl5dN9Ra",
                     Phone = "+380663088726",
                     UserRole = UserRole.Admin,
+                    IsRegistered = true
                 };
                 userRepository.Create(admin);
             }

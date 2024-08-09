@@ -18,6 +18,7 @@ namespace FlowerIdeaSubmissionApi.Controllers
             _ideaRepository = ideaRepository;
             _ideaMapper = ideaMapper;
         }
+
         [AllowAnonymous]
         [HttpPost("CreatedIdea")]
         public IActionResult CreatedIdea([FromBody] IdeaModel model)
@@ -32,6 +33,16 @@ namespace FlowerIdeaSubmissionApi.Controllers
             _ideaRepository.Create(_ideaMapper.CreatedIdeaDb(model));
 
             return Ok(new { message = "Мы обязательно вам перезвоним. Спасибо за вашу идею" });
+        }
+
+        [AllowAnonymous]
+        [HttpGet("GetAllIdeas")]
+        public IActionResult GetAllIdeas()
+        {
+            var ideasDb = _ideaRepository.GetAll();
+            var ideas = _ideaMapper.CreatedIdeaList(ideasDb);
+
+            return Ok(ideas);
         }
     }
 }

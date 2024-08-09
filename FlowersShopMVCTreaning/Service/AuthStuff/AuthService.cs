@@ -51,6 +51,6 @@ namespace FlowersShopMVCTraining.Service.AuthStuff
                 .User
                 .Claims
                 .First(x => x.Type == claimType)
-                .Value;
+                .Value;     
     }
 }

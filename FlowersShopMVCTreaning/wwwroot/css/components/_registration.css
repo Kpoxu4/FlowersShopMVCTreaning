@@ -6,6 +6,7 @@
     align-content: center;
     color: #fff;
 }
+
 .registration__wrapper {
     background-color: #fff8f5;
     padding-top: 300px;
@@ -54,13 +55,13 @@
     position: relative;
 }
 
-.registration__form-group .toggle-password {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
+    .registration__form-group .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
 
 .registration__form-group-item {
     width: 100%;
@@ -92,4 +93,20 @@
 
 .registration__login-available, .registration__phone-available {
     background: #cffad3;
+}
+
+.user__data {
+    display: none
+}
+
+    .user__data.active {
+        display: block;
+        padding: 0;
+        position: absolute;
+        top: 15%;
+        left: 30%;        
+        z-index: 10;
+    }
+.btn_user_data {
+    pointer-events: none;
 }

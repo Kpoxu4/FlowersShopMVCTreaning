@@ -6,8 +6,8 @@
 @section Scripts {
     <script src="/js/mainIndex.js"></script>
     <script src="/js/submittingIdea.js"></script>
+    <script src="/js/BasketCreateItem.js"></script>
 }
-
 
 <div class="window-message-for-user">
     <!-- Contents of the modal window -->
@@ -76,7 +76,7 @@
                                 }
                             </div>
 
-                            <a href="#" class="slider__item-btn btn-reset">Заказать</a>
+                            <button class="slider__item-btn btn-reset" data-item-id="@item.Id">Заказать</button>
                         </div>
 
                     </div>
@@ -196,3 +196,21 @@
     </div>
 </section>
 <!-- Offer-your-bouquet start-->
+<div class="registration__wrapper user__data">
+    <div class="registration flex">
+        <h2 class="registration__title">
+            Нужны ваши данные для оформления заказа
+        </h2>
+        <div class="registration__form-group">
+            <input class="registration__form-group-item registration_phone user_data_phone" type="text" name="phone" placeholder="Телефон"
+                   required
+                   title="Номер телефона не может быть пустым.">
+        </div>
+        <div class="registration__form-group">
+            <input class="registration__form-group-item registration_login user_data_name" type="text" name="userName" placeholder="Имя"
+                   required
+                   title="Имя пользователя не может быть пустым.">
+        </div>
+        <button class="btn-reset registration-btn btn_user_data" type="submit">Отправить</button>
+    </div>
+</div>

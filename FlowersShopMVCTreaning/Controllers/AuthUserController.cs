@@ -97,7 +97,8 @@ namespace FlowersShopMVCTraining.Controllers
                 UserName = viewModel.UserName,
                 Password = _hashingService.HashPassword(viewModel.Password),
                 Phone = viewModel.Phone,
-                UserRole = UserRole.User
+                UserRole = UserRole.User,
+                IsRegistered = true
             };
 
             _userRepository.Create(user);
@@ -135,6 +136,7 @@ namespace FlowersShopMVCTraining.Controllers
                 new Claim(AuthClaimsConstants.NAME, user.UserName),
                 new Claim(AuthClaimsConstants.PHONE, user.Phone),
                 new Claim(AuthClaimsConstants.USER_ROLE, user.UserRole.ToString()),
+                new Claim(AuthClaimsConstants.IS_REGISTERED, user.IsRegistered.ToString()),
                 new Claim(ClaimTypes.AuthenticationMethod,AUTH_METHOD)
             };
 
